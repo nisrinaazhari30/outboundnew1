@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wisata Outbound Batu Malang | Adventure & Team Building</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root {
+  --green: #1a7c3e;
+  --green-light: #28a856;
+  --green-dark: #0f4d26;
+  --orange: #f57c00;
+  --orange-light: #ff9800;
+  --cream: #fdf8f2;
+  --dark: #1a1a1a;
+  --gray: #666;
+  --border: #e5e5e5;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Montserrat',sans-serif;background:#fff;color:var(--dark);overflow-x:hidden}
+
+/* PAGES */
+.page{display:none;min-height:100vh}
+.page.active{display:block}
+
+/* NAVBAR */
+nav{position:fixed;top:0;left:0;width:100%;z-index:999;background:rgba(15,77,38,0.97);backdrop-filter:blur(10px);box-shadow:0 2px 20px rgba(0,0,0,0.3);transition:all 0.3s}
+.nav-inner{max-width:1200px;margin:auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:70px}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;cursor:pointer}
+.nav-logo-icon{width:44px;height:44px;background:var(--orange);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;color:#fff;font-weight:900}
+.nav-logo-text{color:#fff;font-weight:800;font-size:18px;line-height:1.1}
+.nav-logo-text span{color:var(--orange-light);font-size:12px;font-weight:500;display:block}
+.nav-links{display:flex;align-items:center;gap:6px}
+.nav-links a{color:rgba(255,255,255,0.85);text-decoration:none;font-size:13px;font-weight:600;padding:8px 14px;border-radius:6px;transition:all 0.2s;cursor:pointer}
+.nav-links a:hover,.nav-links a.active-link{color:#fff;background:rgba(255,255,255,0.15)}
+.nav-dropdown{position:relative}
+.nav-dropdown-menu{display:none;position:absolute;top:calc(100% + 8px);left:0;background:#fff;border-radius:10px;box-shadow:0 10px 40px rgba(0,0,0,0.15);min-width:200px;overflow:hidden;z-index:1000}
+.nav-dropdown:hover .nav-dropdown-menu{display:block}
+.nav-dropdown-menu a{display:block;padding:12px 18px;color:var(--dark);font-size:13px;border-bottom:1px solid #f5f5f5;transition:background 0.2s}
+.nav-dropdown-menu a:hover{background:var(--cream);color:var(--green)}
+.nav-cta{background:var(--orange)!important;color:#fff!important;border-radius:8px!important;padding:9px 18px!important}
+.nav-cta:hover{background:var(--orange-light)!important;transform:translateY(-1px)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px}
+.hamburger span{width:24px;height:2px;background:#fff;border-radius:2px;transition:all 0.3s}
+.mobile-menu{display:none;background:var(--green-dark);padding:16px 24px 24px}
+.mobile-menu.open{display:block}
+.mobile-menu a{display:block;color:#fff;padding:12px 0;font-size:14px;font-weight:600;border-bottom:1px solid rgba(255,255,255,0.1);text-decoration:none;cursor:pointer}
+
+/* HERO */
+.hero{height:100vh;position:relative;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,#0a3d1f 0%,#1a7c3e 50%,#2d6a1f 100%);z-index:0}
+.hero-bg::after{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.hero-shapes{position:absolute;inset:0;overflow:hidden;z-index:1}
+.hero-shape{position:absolute;border-radius:50%;filter:blur(80px);opacity:0.15}
+.hero-shape:nth-child(1){width:600px;height:600px;background:#f57c00;top:-200px;right:-100px}
+.hero-shape:nth-child(2){width:400px;height:400px;background:#28a856;bottom:-100px;left:-100px}
+.hero-content{position:relative;z-index:2;max-width:1200px;margin:auto;padding:0 24px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.hero-text .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(245,124,0,0.2);border:1px solid rgba(245,124,0,0.4);color:var(--orange-light);padding:8px 16px;border-radius:50px;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:24px}
+.hero-text h1{font-size:clamp(36px,5vw,64px);font-weight:900;color:#fff;line-height:1.1;margin-bottom:20px}
+.hero-text h1 span{color:var(--orange-light)}
+.hero-text p{color:rgba(255,255,255,0.75);font-size:16px;line-height:1.7;margin-bottom:32px;font-family:'Lora',serif;font-style:italic}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap}
+.btn-primary{background:var(--orange);color:#fff;padding:14px 28px;border-radius:10px;font-weight:700;font-size:14px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all 0.3s;border:none;cursor:pointer}
+.btn-primary:hover{background:var(--orange-light);transform:translateY(-2px);box-shadow:0 10px 30px rgba(245,124,0,0.4)}
+.btn-outline{background:transparent;color:#fff;padding:14px 28px;border-radius:10px;font-weight:700;font-size:14px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all 0.3s;border:2px solid rgba(255,255,255,0.4);cursor:pointer}
+.btn-outline:hover{background:rgba(255,255,255,0.1);border-color:#fff}
+.hero-stats{display:flex;gap:32px;margin-top:40px}
+.stat{text-align:center}
+.stat-num{font-size:32px;font-weight:900;color:var(--orange-light)}
+.stat-label{font-size:12px;color:rgba(255,255,255,0.6);font-weight:600;text-transform:uppercase;letter-spacing:1px}
+.hero-visual{position:relative}
+.hero-img-container{border-radius:20px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,0.4);position:relative}
+.hero-img-container img{width:100%;height:450px;object-fit:cover;display:block}
+.hero-img-badge{position:absolute;bottom:20px;left:20px;background:rgba(15,77,38,0.9);backdrop-filter:blur(10px);border-radius:12px;padding:16px;border:1px solid rgba(255,255,255,0.1)}
+.hero-img-badge p{color:#fff;font-size:13px;font-weight:700}
+.hero-img-badge span{color:var(--orange-light);font-size:12px}
+.hero-float{position:absolute;top:-20px;right:-20px;background:#fff;border-radius:16px;padding:16px;box-shadow:0 10px 40px rgba(0,0,0,0.15);text-align:center}
+.hero-float i{font-size:28px;color:var(--green)}
+.hero-float p{font-size:11px;font-weight:700;color:var(--dark);margin-top:4px}
+
+/* SECTION COMMONS */
+.section{padding:80px 0}
+.section-alt{background:var(--cream)}
+.container{max-width:1200px;margin:auto;padding:0 24px}
+.section-header{text-align:center;margin-bottom:56px}
+.section-label{display:inline-block;background:rgba(26,124,62,0.1);color:var(--green);font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:6px 16px;border-radius:50px;margin-bottom:16px;border:1px solid rgba(26,124,62,0.2)}
+.section-title{font-size:clamp(28px,4vw,44px);font-weight:900;color:var(--dark);line-height:1.15;margin-bottom:16px}
+.section-title span{color:var(--green)}
+.section-desc{color:var(--gray);font-size:16px;max-width:600px;margin:auto;line-height:1.7;font-family:'Lora',serif}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.about-img-wrap{position:relative}
+.about-img-wrap img{width:100%;border-radius:20px;object-fit:cover;height:500px;display:block}
+.about-img-overlay{position:absolute;bottom:-30px;right:-30px;background:var(--green);border-radius:16px;padding:28px;color:#fff;text-align:center;box-shadow:0 20px 50px rgba(26,124,62,0.3)}
+.about-img-overlay .num{font-size:48px;font-weight:900;color:var(--orange-light);line-height:1}
+.about-img-overlay p{font-size:13px;font-weight:600;opacity:0.8}
+.about-content .section-label{text-align:left}
+.about-content h2{font-size:clamp(28px,3.5vw,40px);font-weight:900;line-height:1.2;margin-bottom:16px}
+.about-content p{color:var(--gray);font-size:15px;line-height:1.8;margin-bottom:24px;font-family:'Lora',serif}
+.about-features{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px}
+.about-feat{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--border);border-radius:12px;padding:16px}
+.about-feat i{width:40px;height:40px;background:rgba(26,124,62,0.1);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--green);font-size:18px;flex-shrink:0}
+.about-feat span{font-size:13px;font-weight:600}
+
+/* SERVICES/PACKAGES */
+.packages-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.pkg-card{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.08);transition:all 0.3s;border:1px solid var(--border);cursor:pointer}
+.pkg-card:hover{transform:translateY(-8px);box-shadow:0 20px 60px rgba(0,0,0,0.15)}
+.pkg-img{height:200px;overflow:hidden;position:relative}
+.pkg-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s}
+.pkg-card:hover .pkg-img img{transform:scale(1.08)}
+.pkg-badge{position:absolute;top:16px;left:16px;background:var(--orange);color:#fff;font-size:11px;font-weight:700;padding:5px 12px;border-radius:50px;text-transform:uppercase;letter-spacing:1px}
+.pkg-body{padding:24px}
+.pkg-body h3{font-size:18px;font-weight:800;margin-bottom:8px}
+.pkg-body p{color:var(--gray);font-size:13px;line-height:1.6;margin-bottom:20px;font-family:'Lora',serif}
+.pkg-features{list-style:none;margin-bottom:20px}
+.pkg-features li{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--gray);padding:4px 0}
+.pkg-features li i{color:var(--green);font-size:12px}
+.pkg-price{display:flex;align-items:center;justify-content:space-between}
+.pkg-price-text{font-size:13px;color:var(--gray)}
+.pkg-price-val{font-size:18px;font-weight:800;color:var(--green)}
+.pkg-btn{width:100%;margin-top:16px;background:var(--green);color:#fff;border:none;padding:12px;border-radius:10px;font-weight:700;font-size:13px;cursor:pointer;transition:all 0.3s;display:flex;align-items:center;justify-content:center;gap:8px}
+.pkg-btn:hover{background:var(--green-dark)}
+.pkg-card.featured{border:2px solid var(--green)}
+.pkg-card.featured .pkg-badge{background:var(--green)}
+
+/* GALLERY */
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:auto auto;gap:16px}
+.gallery-item{border-radius:16px;overflow:hidden;cursor:pointer;position:relative}
+.gallery-item.large{grid-column:span 2;grid-row:span 2}
+.gallery-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s}
+.gallery-item:hover img{transform:scale(1.05)}
+.gallery-item::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,0);transition:background 0.3s}
+.gallery-item:hover::after{background:rgba(26,124,62,0.3)}
+
+/* TESTIMONIALS */
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.testi-card{background:#fff;border-radius:16px;padding:28px;box-shadow:0 4px 20px rgba(0,0,0,0.07);border:1px solid var(--border);transition:transform 0.3s}
+.testi-card:hover{transform:translateY(-4px)}
+.testi-stars{display:flex;gap:3px;margin-bottom:16px}
+.testi-stars i{color:var(--orange);font-size:14px}
+.testi-text{font-family:'Lora',serif;font-style:italic;color:var(--gray);font-size:14px;line-height:1.7;margin-bottom:20px}
+.testi-author{display:flex;align-items:center;gap:12px}
+.testi-avatar{width:44px;height:44px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:16px}
+.testi-name{font-weight:700;font-size:14px}
+.testi-role{font-size:12px;color:var(--gray)}
+
+/* BLOG */
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.blog-card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.07);border:1px solid var(--border);transition:all 0.3s;cursor:pointer}
+.blog-card:hover{transform:translateY(-6px);box-shadow:0 16px 50px rgba(0,0,0,0.12)}
+.blog-img{height:200px;overflow:hidden}
+.blog-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+.blog-card:hover .blog-img img{transform:scale(1.06)}
+.blog-body{padding:24px}
+.blog-meta{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.blog-cat{background:rgba(26,124,62,0.1);color:var(--green);font-size:11px;font-weight:700;padding:4px 10px;border-radius:50px;text-transform:uppercase}
+.blog-date{font-size:12px;color:var(--gray);display:flex;align-items:center;gap:4px}
+.blog-body h3{font-size:16px;font-weight:800;margin-bottom:8px;line-height:1.4}
+.blog-body p{color:var(--gray);font-size:13px;line-height:1.6;font-family:'Lora',serif}
+.blog-footer{padding:0 24px 20px;display:flex;align-items:center;justify-content:space-between}
+.blog-author{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600}
+.blog-read-more{font-size:12px;color:var(--green);font-weight:700;text-decoration:none;display:flex;align-items:center;gap:4px}
+
+/* BLOG POST PAGE */
+.blog-post-hero{padding:120px 0 60px;background:linear-gradient(135deg,var(--green-dark),var(--green))}
+.blog-post-hero h1{font-size:clamp(28px,4vw,48px);font-weight:900;color:#fff;margin-bottom:20px;line-height:1.2}
+.blog-breadcrumb{display:flex;align-items:center;gap:8px;margin-bottom:20px;font-size:13px}
+.blog-breadcrumb a{color:rgba(255,255,255,0.7);text-decoration:none;cursor:pointer}
+.blog-breadcrumb a:hover{color:#fff}
+.blog-breadcrumb span{color:rgba(255,255,255,0.5)}
+.blog-post-meta{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.blog-post-meta span{color:rgba(255,255,255,0.7);font-size:13px;display:flex;align-items:center;gap:6px}
+.blog-post-content{padding:60px 0}
+.blog-post-grid{display:grid;grid-template-columns:1fr 320px;gap:48px;align-items:start}
+.blog-post-body{background:#fff;border-radius:16px;padding:40px;border:1px solid var(--border)}
+.blog-post-body img{width:100%;border-radius:12px;margin:24px 0}
+.blog-post-body h2{font-size:24px;font-weight:800;margin:32px 0 16px}
+.blog-post-body h3{font-size:20px;font-weight:700;margin:24px 0 12px;color:var(--green)}
+.blog-post-body p{color:var(--gray);font-size:15px;line-height:1.8;margin-bottom:16px;font-family:'Lora',serif}
+.blog-post-body ul{padding-left:20px;margin-bottom:16px}
+.blog-post-body ul li{color:var(--gray);font-size:15px;line-height:1.8;margin-bottom:8px;font-family:'Lora',serif}
+.blog-sidebar{position:sticky;top:90px}
+.sidebar-widget{background:#fff;border-radius:16px;padding:24px;border:1px solid var(--border);margin-bottom:24px}
+.sidebar-widget h4{font-size:15px;font-weight:800;margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid var(--green)}
+.sidebar-post{display:flex;gap:12px;margin-bottom:16px;cursor:pointer;padding-bottom:16px;border-bottom:1px solid #f5f5f5}
+.sidebar-post:last-child{border:0;margin:0;padding:0}
+.sidebar-post img{width:60px;height:60px;border-radius:8px;object-fit:cover;flex-shrink:0}
+.sidebar-post-text h5{font-size:13px;font-weight:700;margin-bottom:4px;line-height:1.3}
+.sidebar-post-text span{font-size:11px;color:var(--gray)}
+.tag-cloud{display:flex;flex-wrap:wrap;gap:8px}
+.tag{background:#f5f5f5;color:var(--gray);font-size:12px;font-weight:600;padding:6px 12px;border-radius:50px;cursor:pointer;transition:all 0.2s}
+.tag:hover{background:var(--green);color:#fff}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.contact-info h3{font-size:28px;font-weight:900;margin-bottom:16px}
+.contact-info p{color:var(--gray);font-size:15px;line-height:1.7;margin-bottom:32px;font-family:'Lora',serif}
+.contact-item{display:flex;gap:16px;margin-bottom:24px;align-items:flex-start}
+.contact-item-icon{width:48px;height:48px;background:rgba(26,124,62,0.1);border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--green);font-size:20px;flex-shrink:0}
+.contact-item-text strong{display:block;font-weight:700;margin-bottom:4px}
+.contact-item-text span{color:var(--gray);font-size:14px}
+.contact-form{background:#fff;border-radius:20px;padding:40px;box-shadow:0 10px 40px rgba(0,0,0,0.08);border:1px solid var(--border)}
+.form-group{margin-bottom:20px}
+.form-group label{display:block;font-size:13px;font-weight:700;margin-bottom:8px;color:var(--dark)}
+.form-group input,.form-group textarea,.form-group select{width:100%;padding:12px 16px;border:2px solid var(--border);border-radius:10px;font-size:14px;font-family:'Montserrat',sans-serif;transition:border 0.2s;outline:none;background:#fff}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--green)}
+.form-group textarea{height:120px;resize:none}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
+/* FOOTER */
+footer{background:var(--green-dark);color:#fff;padding:64px 0 0}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.footer-brand p{color:rgba(255,255,255,0.6);font-size:14px;line-height:1.7;margin:16px 0 24px;font-family:'Lora',serif}
+.footer-social{display:flex;gap:12px}
+.footer-social a{width:40px;height:40px;background:rgba(255,255,255,0.1);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;text-decoration:none;transition:all 0.2s}
+.footer-social a:hover{background:var(--orange);transform:translateY(-2px)}
+.footer-col h4{font-size:15px;font-weight:800;margin-bottom:20px;color:#fff}
+.footer-col ul{list-style:none}
+.footer-col ul li{margin-bottom:10px}
+.footer-col ul li a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:13px;transition:color 0.2s;cursor:pointer}
+.footer-col ul li a:hover{color:var(--orange-light)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.1);padding:24px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer-bottom p{color:rgba(255,255,255,0.5);font-size:13px}
+
+/* FLOATING BUTTONS */
+.float-wa{position:fixed;bottom:90px;right:24px;z-index:990;width:56px;height:56px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:26px;box-shadow:0 4px 20px rgba(37,211,102,0.4);text-decoration:none;animation:pulse-wa 2s infinite}
+.float-wa:hover{transform:scale(1.1)}
+.float-up{position:fixed;bottom:24px;right:24px;z-index:990;width:48px;height:48px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;box-shadow:0 4px 20px rgba(26,124,62,0.4);cursor:pointer;opacity:0;transition:all 0.3s;border:none}
+.float-up.visible{opacity:1}
+.float-up:hover{background:var(--green-dark);transform:translateY(-2px)}
+@keyframes pulse-wa{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,0.4)}50%{box-shadow:0 4px 30px rgba(37,211,102,0.7),0 0 0 8px rgba(37,211,102,0.1)}}
+
+/* LIGHTBOX */
+.lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:9999;align-items:center;justify-content:center}
+.lightbox.open{display:flex}
+.lightbox img{max-width:90vw;max-height:90vh;border-radius:12px;object-fit:contain}
+.lightbox-close{position:absolute;top:20px;right:20px;background:rgba(255,255,255,0.2);border:none;color:#fff;font-size:24px;width:48px;height:48px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center}
+
+/* WHY US */
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.why-card{text-align:center;padding:32px 24px;background:#fff;border-radius:20px;border:1px solid var(--border);transition:all 0.3s}
+.why-card:hover{border-color:var(--green);transform:translateY(-4px);box-shadow:0 12px 40px rgba(26,124,62,0.12)}
+.why-icon{width:64px;height:64px;background:linear-gradient(135deg,var(--green),var(--green-light));border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:28px;color:#fff;box-shadow:0 8px 24px rgba(26,124,62,0.25)}
+.why-card h4{font-size:16px;font-weight:800;margin-bottom:10px}
+.why-card p{color:var(--gray);font-size:13px;line-height:1.6;font-family:'Lora',serif}
+
+/* PROGRAM ACTIVITIES */
+.activities-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.act-card{border-radius:16px;overflow:hidden;position:relative;height:280px;cursor:pointer}
+.act-card img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+.act-card:hover img{transform:scale(1.08)}
+.act-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.8),transparent 60%);display:flex;flex-direction:column;justify-content:flex-end;padding:24px}
+.act-overlay h4{color:#fff;font-size:18px;font-weight:800;margin-bottom:6px}
+.act-overlay p{color:rgba(255,255,255,0.7);font-size:13px}
+
+/* PRICING */
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.price-card{background:#fff;border-radius:20px;padding:32px;border:2px solid var(--border);transition:all 0.3s;text-align:center}
+.price-card.popular{border-color:var(--green);position:relative}
+.popular-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--green);color:#fff;font-size:11px;font-weight:700;padding:5px 16px;border-radius:50px;white-space:nowrap;text-transform:uppercase;letter-spacing:1px}
+.price-card:hover{transform:translateY(-6px);box-shadow:0 20px 60px rgba(0,0,0,0.12)}
+.price-icon{width:64px;height:64px;background:rgba(26,124,62,0.1);border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:28px;color:var(--green)}
+.price-name{font-size:16px;font-weight:800;margin-bottom:8px;text-transform:uppercase;letter-spacing:1px}
+.price-amount{font-size:36px;font-weight:900;color:var(--green);margin:16px 0}
+.price-amount sup{font-size:16px;margin-right:4px}
+.price-amount sub{font-size:14px;color:var(--gray)}
+.price-features{list-style:none;margin:20px 0 28px;text-align:left}
+.price-features li{display:flex;align-items:center;gap:10px;font-size:13px;padding:8px 0;border-bottom:1px solid #f5f5f5;color:var(--gray)}
+.price-features li i{color:var(--green);width:16px}
+.price-features li.no{color:#ccc}
+.price-features li.no i{color:#ccc}
+
+/* PAGE TRANSITIONS */
+.page{animation:fadeIn 0.4s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+/* BREADCRUMB */
+.page-hero{padding:120px 0 60px;background:linear-gradient(135deg,var(--green-dark),var(--green))}
+.page-hero h1{font-size:clamp(28px,4vw,48px);font-weight:900;color:#fff;margin-bottom:12px}
+.page-hero p{color:rgba(255,255,255,0.7);font-size:16px}
+.breadcrumb{display:flex;align-items:center;gap:8px;margin-top:16px;font-size:13px}
+.breadcrumb a{color:rgba(255,255,255,0.7);text-decoration:none;cursor:pointer}
+.breadcrumb a:hover{color:#fff}
+.breadcrumb span{color:rgba(255,255,255,0.4)}
+
+/* CTA SECTION */
+.cta-section{background:linear-gradient(135deg,var(--orange),var(--orange-light));padding:80px 0;text-align:center}
+.cta-section h2{font-size:clamp(28px,4vw,44px);font-weight:900;color:#fff;margin-bottom:16px}
+.cta-section p{color:rgba(255,255,255,0.85);font-size:16px;margin-bottom:32px;font-family:'Lora',serif;max-width:600px;margin-left:auto;margin-right:auto}
+.btn-white{background:#fff;color:var(--orange);padding:14px 32px;border-radius:10px;font-weight:800;font-size:14px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all 0.3s;border:none;cursor:pointer}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,0,0,0.15)}
+
+/* MAP EMBED */
+.map-section{height:400px;position:relative;overflow:hidden}
+.map-section iframe{width:100%;height:100%;border:0;filter:grayscale(30%)}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+.hero-content{grid-template-columns:1fr;text-align:center}
+.hero-visual{display:none}
+.hero-btns{justify-content:center}
+.hero-stats{justify-content:center}
+.about-grid,.contact-grid,.blog-post-grid{grid-template-columns:1fr}
+.blog-sidebar{position:relative;top:0}
+.about-img-overlay{bottom:-20px;right:0}
+.footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+.nav-links,.nav-cta-wrap{display:none}
+.hamburger{display:flex}
+.packages-grid,.testimonials-grid,.blog-grid,.why-grid,.activities-grid,.pricing-grid{grid-template-columns:1fr}
+.gallery-grid{grid-template-columns:1fr 1fr}
+.gallery-item.large{grid-column:span 1;grid-row:span 1}
+.footer-grid{grid-template-columns:1fr}
+.form-row{grid-template-columns:1fr}
+.hero-stats{flex-direction:column;gap:16px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <div class="nav-logo" onclick="showPage('home')">
+      <div class="nav-logo-icon"><i class="fas fa-mountain"></i></div>
+      <div class="nav-logo-text">Batu Adventure<span>Outbound & Wisata Batu Malang</span></div>
+    </div>
+    <div class="nav-links">
+      <a onclick="showPage('home')" class="active-link" id="nav-home">Beranda</a>
+      <div class="nav-dropdown">
+        <a>Layanan <i class="fas fa-chevron-down" style="font-size:10px"></i></a>
+        <div class="nav-dropdown-menu">
+          <a onclick="showPage('outbound-perusahaan')"><i class="fas fa-building" style="margin-right:8px;color:var(--green)"></i>Outbound Perusahaan</a>
+          <a onclick="showPage('outbound-wisata')"><i class="fas fa-map-marked-alt" style="margin-right:8px;color:var(--green)"></i>Wisata Edukasi</a>
+          <a onclick="showPage('outbound-bromo')"><i class="fas fa-volcano" style="margin-right:8px;color:var(--green)"></i>Outbound Bromo</a>
+          <a onclick="showPage('outbound-gathering')"><i class="fas fa-users" style="margin-right:8px;color:var(--green)"></i>Gathering & Event</a>
+        </div>
+      </div>
+      <a onclick="showPage('galeri')">Galeri</a>
+      <a onclick="showPage('blog')">Blog</a>
+      <a onclick="navigateToContact()">Kontak</a>
+      <a class="nav-cta" onclick="openWA()"><i class="fab fa-whatsapp"></i> Konsultasi Gratis</a>
+    </div>
+    <div class="hamburger" onclick="toggleMobile()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a onclick="showPage('home');toggleMobile()">Beranda</a>
+    <a onclick="showPage('outbound-perusahaan');toggleMobile()">Outbound Perusahaan</a>
+    <a onclick="showPage('outbound-wisata');toggleMobile()">Wisata Edukasi</a>
+    <a onclick="showPage('outbound-bromo');toggleMobile()">Outbound Bromo</a>
+    <a onclick="showPage('outbound-gathering');toggleMobile()">Gathering & Event</a>
+    <a onclick="showPage('galeri');toggleMobile()">Galeri</a>
+    <a onclick="showPage('blog');toggleMobile()">Blog</a>
+    <a onclick="navigateToContact();toggleMobile()">Kontak</a>
+  </div>
+</nav>
+
+<!-- FLOATING BUTTONS -->
+<a class="float-wa" href="https://wa.me/6281234567890?text=Halo,%20saya%20ingin%20tanya%20tentang%20paket%20outbound%20Batu%20Malang" target="_blank" title="Chat WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+<button class="float-up" id="floatUp" onclick="scrollToTop()" title="Kembali ke atas">
+  <i class="fas fa-chevron-up"></i>
+</button>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <img id="lightboxImg" src="" alt="">
+  <button class="lightbox-close" onclick="closeLightbox()"><i class="fas fa-times"></i></button>
+</div>
+
+<!-- ===== PAGE: HOME ===== -->
+<div class="page active" id="page-home">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-shapes">
+      <div class="hero-shape"></div>
+      <div class="hero-shape"></div>
+    </div>
+    <div class="hero-content container" style="max-width:1200px">
+      <div class="hero-text">
+        <div class="badge"><i class="fas fa-star"></i> #1 Vendor Outbound Batu Malang</div>
+        <h1>Petualangan Seru di <span>Batu Malang</span> Bersama Kami</h1>
+        <p>Paket outbound & wisata terbaik untuk team building, gathering perusahaan, dan edukasi. Pengalaman tak terlupakan di alam Batu Malang yang memukau.</p>
+        <div class="hero-btns">
+          <button class="btn-primary" onclick="navigateToContact()"><i class="fas fa-phone"></i> Konsultasi Sekarang</button>
+          <button class="btn-outline" onclick="showPage('outbound-perusahaan')"><i class="fas fa-play-circle"></i> Lihat Paket</button>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><div class="stat-num">500+</div><div class="stat-label">Klien Puas</div></div>
+          <div class="stat"><div class="stat-num">12+</div><div class="stat-label">Tahun Pengalaman</div></div>
+          <div class="stat"><div class="stat-num">50+</div><div class="stat-label">Jenis Program</div></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-img-container">
+          <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80" alt="Outbound Batu Malang">
+          <div class="hero-img-badge">
+            <p>Alam Pegunungan Batu</p>
+            <span>Suhu sejuk 18-24°C sepanjang tahun</span>
+          </div>
+        </div>
+        <div class="hero-float">
+          <i class="fas fa-shield-alt"></i>
+          <p>Terjamin Aman & Profesional</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Mengapa Kami</span>
+        <h2 class="section-title">Keunggulan <span>Batu Adventure</span></h2>
+        <p class="section-desc">Kami hadir dengan tim profesional dan berpengalaman untuk memastikan setiap kegiatan berjalan sempurna</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-icon"><i class="fas fa-user-tie"></i></div>
+          <h4>Instruktur Bersertifikat</h4>
+          <p>Tim instruktur kami bersertifikat nasional dengan pengalaman lebih dari 10 tahun di bidang outbound dan adventure</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><i class="fas fa-shield-alt"></i></div>
+          <h4>Keamanan Terjamin</h4>
+          <p>Semua peralatan kami terstandarisasi internasional dan selalu dicek sebelum kegiatan dimulai demi keselamatan peserta</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><i class="fas fa-map-marked-alt"></i></div>
+          <h4>Lokasi Premium</h4>
+          <p>Lokasi outbound kami dipilih dengan cermat di kawasan pegunungan Batu Malang yang indah dan mudah diakses</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><i class="fas fa-dollar-sign"></i></div>
+          <h4>Harga Terbaik</h4>
+          <p>Paket lengkap dengan harga kompetitif. Kami memberikan nilai terbaik untuk setiap rupiah yang Anda investasikan</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-img-wrap">
+          <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?w=600&q=80" alt="Tim Outbound">
+          <div class="about-img-overlay">
+            <div class="num">12+</div>
+            <p>Tahun Melayani</p>
+          </div>
+        </div>
+        <div class="about-content">
+          <span class="section-label">Tentang Kami</span>
+          <h2>Vendor Outbound <span style="color:var(--green)">Terpercaya</span> di Batu Malang</h2>
+          <p>Batu Adventure adalah penyedia layanan outbound dan wisata terdepan di Batu Malang. Kami hadir sejak 2012 dengan misi memberikan pengalaman team building yang bermakna dan berkesan bagi setiap peserta.</p>
+          <p>Dengan ratusan program yang telah kami jalankan, kami memahami bahwa setiap kelompok memiliki kebutuhan yang unik. Itulah mengapa setiap paket kami dirancang secara khusus dan dapat dikustomisasi sesuai kebutuhan Anda.</p>
+          <div class="about-features">
+            <div class="about-feat"><i class="fas fa-check"></i><span>Instruktur Berpengalaman</span></div>
+            <div class="about-feat"><i class="fas fa-check"></i><span>Peralatan Standar Nasional</span></div>
+            <div class="about-feat"><i class="fas fa-check"></i><span>Program Custom</span></div>
+            <div class="about-feat"><i class="fas fa-check"></i><span>Asuransi Peserta</span></div>
+          </div>
+          <button class="btn-primary" onclick="navigateToContact()" style="margin-top:28px"><i class="fas fa-arrow-right"></i> Hubungi Kami</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PACKAGES -->
+  <section class="section" id="paket">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Layanan Kami</span>
+        <h2 class="section-title">Paket <span>Outbound & Wisata</span></h2>
+        <p class="section-desc">Pilih paket yang sesuai dengan kebutuhan tim dan anggaran Anda</p>
+      </div>
+      <div class="packages-grid">
+        <div class="pkg-card" onclick="showPage('outbound-perusahaan')">
+          <div class="pkg-img">
+            <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=500&q=80" alt="Outbound Perusahaan">
+            <span class="pkg-badge">Populer</span>
+          </div>
+          <div class="pkg-body">
+            <h3>Outbound Perusahaan</h3>
+            <p>Team building dan outbound profesional untuk perusahaan dan korporasi. Dirancang untuk meningkatkan kerjasama tim.</p>
+            <ul class="pkg-features">
+              <li><i class="fas fa-check-circle"></i>Flying Fox & Rappelling</li>
+              <li><i class="fas fa-check-circle"></i>Team Building Games</li>
+              <li><i class="fas fa-check-circle"></i>Makan & Snack</li>
+              <li><i class="fas fa-check-circle"></i>Dokumentasi Foto/Video</li>
+            </ul>
+            <div class="pkg-price">
+              <span class="pkg-price-text">Mulai dari</span>
+              <span class="pkg-price-val">Rp 150rb/orang</span>
+            </div>
+            <button class="pkg-btn"><i class="fas fa-arrow-right"></i>Lihat Detail</button>
+          </div>
+        </div>
+        <div class="pkg-card featured" onclick="showPage('outbound-wisata')">
+          <div class="pkg-img">
+            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=500&q=80" alt="Wisata Edukasi">
+            <span class="pkg-badge" style="background:var(--green)">Terlaris</span>
+          </div>
+          <div class="pkg-body">
+            <h3>Wisata Outbound</h3>
+            <p>Perpaduan wisata alam dan outbound yang sempurna untuk keluarga, sekolah, dan komunitas di Batu Malang.</p>
+            <ul class="pkg-features">
+              <li><i class="fas fa-check-circle"></i>Wisata Alam Batu Malang</li>
+              <li><i class="fas fa-check-circle"></i>Outbound Games</li>
+              <li><i class="fas fa-check-circle"></i>Kuliner Lokal</li>
+              <li><i class="fas fa-check-circle"></i>Guide Berpengalaman</li>
+            </ul>
+            <div class="pkg-price">
+              <span class="pkg-price-text">Mulai dari</span>
+              <span class="pkg-price-val">Rp 120rb/orang</span>
+            </div>
+            <button class="pkg-btn" style="background:var(--green)"><i class="fas fa-arrow-right"></i>Lihat Detail</button>
+          </div>
+        </div>
+        <div class="pkg-card" onclick="showPage('outbound-bromo')">
+          <div class="pkg-img">
+            <img src="https://images.unsplash.com/photo-1487731272579-5db55bdb3baa?w=500&q=80" alt="Outbound Bromo">
+            <span class="pkg-badge" style="background:#9c27b0">Premium</span>
+          </div>
+          <div class="pkg-body">
+            <h3>Outbound Bromo</h3>
+            <p>Petualangan epik ke Gunung Bromo yang memukau dikombinasikan dengan aktivitas outbound menantang.</p>
+            <ul class="pkg-features">
+              <li><i class="fas fa-check-circle"></i>Sunrise Bromo Tour</li>
+              <li><i class="fas fa-check-circle"></i>Jeep Adventure</li>
+              <li><i class="fas fa-check-circle"></i>Outbound di Savana</li>
+              <li><i class="fas fa-check-circle"></i>Akomodasi Termasuk</li>
+            </ul>
+            <div class="pkg-price">
+              <span class="pkg-price-text">Mulai dari</span>
+              <span class="pkg-price-val">Rp 350rb/orang</span>
+            </div>
+            <button class="pkg-btn"><i class="fas fa-arrow-right"></i>Lihat Detail</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACTIVITIES -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Program Unggulan</span>
+        <h2 class="section-title">Aktivitas <span>Seru & Menantang</span></h2>
+        <p class="section-desc">Beragam pilihan aktivitas outbound yang dirancang untuk meningkatkan kerjasama, kepemimpinan, dan kreativitas</p>
+      </div>
+      <div class="activities-grid">
+        <div class="act-card">
+          <img src="https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=500&q=80" alt="Flying Fox">
+          <div class="act-overlay"><h4>Flying Fox</h4><p>Adrenalin tinggi meluncur di ketinggian</p></div>
+        </div>
+        <div class="act-card">
+          <img src="https://images.unsplash.com/photo-1533760881669-80db4d7b341c?w=500&q=80" alt="Arung Jeram">
+          <div class="act-overlay"><h4>Arung Jeram</h4><p>Tantang arus sungai bersama tim Anda</p></div>
+        </div>
+        <div class="act-card">
+          <img src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?w=500&q=80" alt="Team Building">
+          <div class="act-overlay"><h4>Team Building</h4><p>Aktivitas kolaboratif yang seru dan bermakna</p></div>
+        </div>
+        <div class="act-card">
+          <img src="https://images.unsplash.com/photo-1502444330042-d1a1ddf9bb5b?w=500&q=80" alt="Hiking">
+          <div class="act-overlay"><h4>Hiking & Trekking</h4><p>Jelajahi jalur alam Batu Malang</p></div>
+        </div>
+        <div class="act-card">
+          <img src="https://images.unsplash.com/photo-1545596527-ed6b45ce81c3?w=500&q=80" alt="Paintball">
+          <div class="act-overlay"><h4>Paintball</h4><p>Pertempuran seru yang memacu semangat</p></div>
+        </div>
+        <div class="act-card">
+          <img src="https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?w=500&q=80" alt="Outbound Games">
+          <div class="act-overlay"><h4>Outbound Games</h4><p>Permainan edukatif dan menghibur</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Harga Paket</span>
+        <h2 class="section-title">Investasi <span>yang Terjangkau</span></h2>
+        <p class="section-desc">Paket harga transparan tanpa biaya tersembunyi. Hubungi kami untuk penawaran khusus grup besar</p>
+      </div>
+      <div class="pricing-grid">
+        <div class="price-card">
+          <div class="price-icon"><i class="fas fa-leaf"></i></div>
+          <div class="price-name">Basic</div>
+          <div class="price-amount"><sup>Rp</sup>125rb<sub>/orang</sub></div>
+          <ul class="price-features">
+            <li><i class="fas fa-check"></i>Outbound Half Day (4 Jam)</li>
+            <li><i class="fas fa-check"></i>5 Game Outbound</li>
+            <li><i class="fas fa-check"></i>Snack & Air Mineral</li>
+            <li><i class="fas fa-check"></i>Instruktur 1 Orang</li>
+            <li class="no"><i class="fas fa-times"></i>Makan Siang</li>
+            <li class="no"><i class="fas fa-times"></i>Dokumentasi Foto</li>
+          </ul>
+          <button class="btn-primary" style="width:100%;justify-content:center" onclick="openWA()">Pesan Sekarang</button>
+        </div>
+        <div class="price-card popular">
+          <div class="popular-badge">Paling Diminati</div>
+          <div class="price-icon" style="background:rgba(26,124,62,0.15)"><i class="fas fa-star"></i></div>
+          <div class="price-name">Standard</div>
+          <div class="price-amount"><sup>Rp</sup>200rb<sub>/orang</sub></div>
+          <ul class="price-features">
+            <li><i class="fas fa-check"></i>Outbound Full Day (8 Jam)</li>
+            <li><i class="fas fa-check"></i>10 Game Outbound</li>
+            <li><i class="fas fa-check"></i>Snack, Makan & Minum</li>
+            <li><i class="fas fa-check"></i>3 Instruktur</li>
+            <li><i class="fas fa-check"></i>Flying Fox Included</li>
+            <li><i class="fas fa-check"></i>Dokumentasi Foto</li>
+          </ul>
+          <button class="btn-primary" style="width:100%;justify-content:center" onclick="openWA()">Pesan Sekarang</button>
+        </div>
+        <div class="price-card">
+          <div class="price-icon"><i class="fas fa-crown"></i></div>
+          <div class="price-name">Premium</div>
+          <div class="price-amount"><sup>Rp</sup>350rb<sub>/orang</sub></div>
+          <ul class="price-features">
+            <li><i class="fas fa-check"></i>2 Hari 1 Malam</li>
+            <li><i class="fas fa-check"></i>Program Custom</li>
+            <li><i class="fas fa-check"></i>All Meals Included</li>
+            <li><i class="fas fa-check"></i>5 Instruktur Bersertifikat</li>
+            <li><i class="fas fa-check"></i>Akomodasi Villa</li>
+            <li><i class="fas fa-check"></i>Foto + Video Profesional</li>
+          </ul>
+          <button class="btn-primary" style="width:100%;justify-content:center" onclick="openWA()">Pesan Sekarang</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY PREVIEW -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Galeri Kami</span>
+        <h2 class="section-title">Momen <span>Tak Terlupakan</span></h2>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item large" onclick="openLightbox(this.querySelector('img').src)">
+          <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80" alt="Galeri 1" style="height:300px">
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this.querySelector('img').src)">
+          <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?w=400&q=80" alt="Galeri 2" style="height:142px">
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this.querySelector('img').src)">
+          <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&q=80" alt="Galeri 3" style="height:142px">
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this.querySelector('img').src)">
+          <img src="https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=400&q=80" alt="Galeri 4" style="height:142px">
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this.querySelector('img').src)">
+          <img src="https://images.unsplash.com/photo-1533760881669-80db4d7b341c?w=400&q=80" alt="Galeri 5" style="height:142px">
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:40px">
+        <button class="btn-primary" onclick="showPage('galeri')"><i class="fas fa-images"></i> Lihat Semua Foto</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Testimoni</span>
+        <h2 class="section-title">Kata Mereka <span>Tentang Kami</span></h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testi-card">
+          <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="testi-text">"Outbound perusahaan kami berjalan sangat lancar. Tim Batu Adventure sangat profesional dan program-programnya sangat engaging. Tim kami jadi lebih solid setelah acara ini!"</p>
+          <div class="testi-author">
+            <div class="testi-avatar">AR</div>
+            <div><div class="testi-name">Ahmad Ridwan</div><div class="testi-role">HR Manager, PT Mandiri Group</div></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="testi-text">"Wisata outbound untuk anak-anak sekolah kami sangat berkesan. Anak-anak sangat antusias dan belajar banyak tentang kerjasama tim. Highly recommended!"</p>
+          <div class="testi-author">
+            <div class="testi-avatar" style="background:#2196f3">SR</div>
+            <div><div class="testi-name">Siti Rahayu</div><div class="testi-role">Guru SDN Malang 1</div></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="testi-text">"Paket outbound Bromo benar-benar luar biasa! Sunrise di Bromo dan outbound seru di savana Tengger jadi pengalaman yang tidak akan pernah kami lupakan!"</p>
+          <div class="testi-author">
+            <div class="testi-avatar" style="background:var(--orange)">BP</div>
+            <div><div class="testi-name">Budi Prasetyo</div><div class="testi-role">Direktur CV. Sinar Jaya</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOG PREVIEW -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Blog & Tips</span>
+        <h2 class="section-title">Artikel <span>Terbaru</span></h2>
+        <p class="section-desc">Tips dan informasi seputar outbound, wisata, dan team building</p>
+      </div>
+      <div class="blog-grid">
+        <div class="blog-card" onclick="showBlogPost('blog-1')">
+          <div class="blog-img"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=500&q=80" alt="Blog 1"></div>
+          <div class="blog-body">
+            <div class="blog-meta">
+              <span class="blog-cat">Tips Outbound</span>
+              <span class="blog-date"><i class="fas fa-calendar"></i> 15 Jan 2025</span>
+            </div>
+            <h3>5 Manfaat Outbound untuk Kekompakan Tim Kerja</h3>
+            <p>Outbound bukan sekadar kegiatan seru, tetapi memiliki dampak nyata terhadap produktivitas dan kekompakan tim...</p>
+          </div>
+          <div class="blog-footer">
+            <span class="blog-author"><i class="fas fa-user-circle" style="color:var(--green)"></i> Admin</span>
+            <a class="blog-read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="blog-card" onclick="showBlogPost('blog-2')">
+          <div class="blog-img"><img src="https://images.unsplash.com/photo-1487731272579-5db55bdb3baa?w=500&q=80" alt="Blog 2"></div>
+          <div class="blog-body">
+            <div class="blog-meta">
+              <span class="blog-cat">Wisata</span>
+              <span class="blog-date"><i class="fas fa-calendar"></i> 10 Jan 2025</span>
+            </div>
+            <h3>Panduan Lengkap Wisata ke Gunung Bromo dari Malang</h3>
+            <p>Gunung Bromo adalah salah satu destinasi wisata paling ikonik di Indonesia. Berikut panduan lengkap untuk perjalanan Anda...</p>
+          </div>
+          <div class="blog-footer">
+            <span class="blog-author"><i class="fas fa-user-circle" style="color:var(--green)"></i> Admin</span>
+            <a class="blog-read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="blog-card" onclick="showBlogPost('blog-3')">
+          <div class="blog-img"><img src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?w=500&q=80" alt="Blog 3"></div>
+          <div class="blog-body">
+            <div class="blog-meta">
+              <span class="blog-cat">Team Building</span>
+              <span class="blog-date"><i class="fas fa-calendar"></i> 5 Jan 2025</span>
+            </div>
+            <h3>Cara Memilih Vendor Outbound yang Tepat untuk Perusahaan</h3>
+            <p>Memilih vendor outbound yang tepat adalah kunci keberhasilan kegiatan team building perusahaan Anda. Ini tips memilihnya...</p>
+          </div>
+          <div class="blog-footer">
+            <span class="blog-author"><i class="fas fa-user-circle" style="color:var(--green)"></i> Admin</span>
+            <a class="blog-read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:40px">
+        <button class="btn-primary" onclick="showPage('blog')"><i class="fas fa-book-open"></i> Lihat Semua Artikel</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Siap Memulai Petualangan Bersama Kami?</h2>
+      <p>Hubungi kami sekarang dan dapatkan penawaran spesial untuk grup Anda. Konsultasi GRATIS!</p>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+        <button class="btn-white" onclick="navigateToContact()"><i class="fas fa-phone"></i> Hubungi Kami</button>
+        <button class="btn-white" style="background:transparent;color:#fff;border:2px solid #fff" onclick="openWA()"><i class="fab fa-whatsapp"></i> Chat WhatsApp</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="kontak">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Kontak</span>
+        <h2 class="section-title">Hubungi <span>Kami</span></h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3>Mari Rencanakan Kegiatan Anda Bersama Kami</h3>
+          <p>Tim kami siap membantu Anda merancang program outbound yang sempurna. Konsultasikan kebutuhan Anda dan kami akan memberikan penawaran terbaik.</p>
+          <div class="contact-item">
+            <div class="contact-item-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="contact-item-text"><strong>Alamat</strong><span>Jl. Raya Batu No. 45, Kota Batu, Malang, Jawa Timur 65314</span></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon"><i class="fas fa-phone"></i></div>
+            <div class="contact-item-text"><strong>Telepon / WhatsApp</strong><span>+62 812-3456-7890</span></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon"><i class="fas fa-envelope"></i></div>
+            <div class="contact-item-text"><strong>Email</strong><span>info@batuadventure.id</span></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon"><i class="fas fa-clock"></i></div>
+            <div class="contact-item-text"><strong>Jam Operasional</strong><span>Senin – Minggu: 07.00 – 20.00 WIB</span></div>
+          </div>
+        </div>
+        <div class="contact-form">
+          <h3 style="font-size:20px;font-weight:800;margin-bottom:24px">Kirim Pesan</h3>
+          <div class="form-row">
+            <div class="form-group"><label>Nama Lengkap</label><input type="text" placeholder="Nama Anda"></div>
+            <div class="form-group"><label>Nomor HP/WA</label><input type="tel" placeholder="+62xxx"></div>
+          </div>
+          <div class="form-group"><label>Email</label><input type="email" placeholder="email@anda.com"></div>
+          <div class="form-group">
+            <label>Paket yang Diminati</label>
+            <select>
+              <option>Pilih Paket...</option>
+              <option>Outbound Perusahaan</option>
+              <option>Wisata Outbound</option>
+              <option>Outbound Bromo</option>
+              <option>Gathering & Event</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Pesan</label><textarea placeholder="Ceritakan kebutuhan Anda..."></textarea></div>
+          <button class="btn-primary" style="width:100%;justify-content:center" onclick="alert('Pesan terkirim! Kami akan segera menghubungi Anda.')"><i class="fas fa-paper-plane"></i> Kirim Pesan</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAP -->
+  <div class="map-section">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126021.60082278043!2d122.5432534!3d-7.8713498!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd629aba8ffc009%3A0x163d05eeef26cf5c!2sBatu%2C%20East%20Java!5e0!3m2!1sen!2sid!4v1234567890" allowfullscreen="" loading="lazy"></iframe>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+            <div style="width:44px;height:44px;background:var(--orange);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;color:#fff;font-weight:900"><i class="fas fa-mountain"></i></div>
+            <div style="color:#fff;font-weight:800;font-size:18px">Batu Adventure</div>
+          </div>
+          <p>Vendor outbound terpercaya di Batu Malang dengan pengalaman lebih dari 12 tahun melayani ratusan perusahaan dan instansi se-Indonesia.</p>
+          <div class="footer-social">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Layanan</h4>
+          <ul>
+            <li><a onclick="showPage('outbound-perusahaan')">Outbound Perusahaan</a></li>
+            <li><a onclick="showPage('outbound-wisata')">Wisata Edukasi</a></li>
+            <li><a onclick="showPage('outbound-bromo')">Outbound Bromo</a></li>
+            <li><a onclick="showPage('outbound-gathering')">Gathering & Event</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Navigasi</h4>
+          <ul>
+            <li><a onclick="showPage('home')">Beranda</a></li>
+            <li><a onclick="showPage('galeri')">Galeri</a></li>
+            <li><a onclick="showPage('blog')">Blog</a></li>
+            <li><a onclick="navigateToContact()">Kontak</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Kontak</h4>
+          <ul>
+            <li><a><i class="fas fa-phone" style="margin-right:6px"></i>+62 812-3456-7890</a></li>
+            <li><a><i class="fas fa-envelope" style="margin-right:6px"></i>info@batuadventure.id</a></li>
+            <li><a><i class="fas fa-map-marker-alt" style="margin-right:6px"></i>Batu, Malang</a></li>
+            <li><a><i class="fas fa-clock" style="margin-right:6px"></i>07.00 – 20.00 WIB</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Batu Adventure. Semua hak dilindungi.</p>
+        <p>Dibuat dengan <i class="fas fa-heart" style="color:#e53935"></i> untuk petualangan terbaik Anda</p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ===== PAGE: OUTBOUND PERUSAHAAN ===== -->
+<div class="page" id="page-outbound-perusahaan">
+  <div class="page-hero">
+    <div class="container">
+      <div class="breadcrumb"><a onclick="showPage('home')">Beranda</a><span>/</span><span style="color:#fff">Outbound Perusahaan</span></div>
+      <h1>Outbound Perusahaan</h1>
+      <p>Program team building profesional untuk perusahaan dan korporasi Anda</p>
+    </div>
+  </div>
+  <section class="section">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-img-wrap">
+          <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=80" alt="Outbound Perusahaan" style="height:450px">
+        </div>
+        <div class="about-content">
+          <span class="section-label">Program Korporat</span>
+          <h2>Team Building yang <span style="color:var(--green)">Bermakna</span></h2>
+          <p>Program outbound perusahaan kami dirancang khusus untuk membangun kekompakan tim, meningkatkan komunikasi, dan mengembangkan jiwa kepemimpinan karyawan Anda dalam suasana alam yang menyegarkan.</p>
+          <p>Dengan metode pembelajaran experiential learning, peserta tidak hanya bermain tetapi juga mendapatkan insight berharga yang dapat diterapkan di lingkungan kerja.</p>
+          <div class="about-features">
+            <div class="about-feat"><i class="fas fa-users"></i><span>Kapasitas 20-500 Orang</span></div>
+            <div class="about-feat"><i class="fas fa-clock"></i><span>Half Day / Full Day / 2D1N</span></div>
+            <div class="about-feat"><i class="fas fa-cogs"></i><span>Program Custom</span></div>
+            <div class="about-feat"><i class="fas fa-certificate"></i><span>Sertifikat Peserta</span></div>
+          </div>
+          <button class="btn-primary" onclick="openWA()" style="margin-top:28px"><i class="fab fa-whatsapp"></i> Hubungi via WhatsApp</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Yang Termasuk</span>
+        <h2 class="section-title">Fasilitas <span>Lengkap</span></h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-card"><div class="why-icon"><i class="fas fa-utensils"></i></div><h4>Konsumsi</h4><p>Makan siang, snack, dan air mineral tersedia untuk semua peserta selama kegiatan berlangsung</p></div>
+        <div class="why-card"><div class="why-icon"><i class="fas fa-camera"></i></div><h4>Dokumentasi</h4><p>Tim fotografer dan videografer profesional kami akan mengabadikan setiap momen kegiatan</p></div>
+        <div class="why-card"><div class="why-icon"><i class="fas fa-tshirt"></i></div><h4>Perlengkapan</h4><p>Kaos seragam tim, topi, dan perlengkapan outbound standar tersedia untuk peserta</p></div>
+        <div class="why-card"><div class="why-icon"><i class="fas fa-ambulance"></i></div><h4>First Aid</h4><p>Tim P3K dan asuransi peserta terjamin selama kegiatan berlangsung</p></div>
+      </div>
+    </div>
+  </section>
+  <div class="cta-section"><div class="container"><h2>Rencanakan Outbound Perusahaan Anda</h2><p>Dapatkan proposal dan penawaran harga terbaik. Hubungi kami sekarang!</p><button class="btn-white" onclick="openWA()"><i class="fab fa-whatsapp"></i> Minta Penawaran</button></div></div>
+  <footer>
+    <div class="container">
+      <div class="footer-bottom" style="border:0;padding:24px 0">
+        <p style="color:rgba(255,255,255,0.5)">© 2025 Batu Adventure. Semua hak dilindungi.</p>
+        <button onclick="showPage('home')" style="background:var(--orange);color:#fff;border:none;padding:8px 20px;border-radius:8px;font-weight:700;cursor:pointer">← Kembali ke Beranda</button>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ===== PAGE: OUTBOUND WISATA ===== -->
+<div class="page" id="page-outbound-wisata">
+  <div class="page-hero"><div class="container"><div class="breadcrumb"><a onclick="showPage('home')">Beranda</a><span>/</span><span style="color:#fff">Wisata Outbound</span></div><h1>Wisata Outbound Batu Malang</h1><p>Perpaduan sempurna antara wisata alam dan aktivitas outbound yang menyenangkan</p></div></div>
+  <section class="section"><div class="container"><div class="about-grid"><div class="about-img-wrap"><img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&q=80" alt="Wisata Outbound" style="height:450px"></div><div class="about-content"><span class="section-label">Wisata & Outbound</span><h2>Alam Batu Malang yang <span style="color:var(--green)">Memukau</span></h2><p>Nikmati keindahan alam Batu Malang yang sejuk sambil menjalani aktivitas outbound yang seru. Program ini cocok untuk keluarga, sekolah, kampus, dan komunitas yang ingin mengombinasikan wisata dengan team building.</p><p>Batu Malang menawarkan pemandangan gunung, kebun apel, air terjun, dan banyak spot wisata menarik yang menjadi backdrop sempurna untuk kegiatan outbound Anda.</p><div class="about-features"><div class="about-feat"><i class="fas fa-family"></i><span>Cocok untuk Keluarga</span></div><div class="about-feat"><i class="fas fa-graduation-cap"></i><span>Wisata Edukasi</span></div><div class="about-feat"><i class="fas fa-apple-alt"></i><span>Petik Apel Langsung</span></div><div class="about-feat"><i class="fas fa-water"></i><span>Wisata Air Terjun</span></div></div><button class="btn-primary" onclick="openWA()" style="margin-top:28px"><i class="fab fa-whatsapp"></i> Pesan Sekarang</button></div></div></div></section>
+  <div class="cta-section"><div class="container"><h2>Wisata Seru di Batu Malang!</h2><p>Paket terlengkap dengan harga terjangkau. Hubungi kami untuk pemesanan!</p><button class="btn-white" onclick="openWA()"><i class="fab fa-whatsapp"></i> Pesan Sekarang</button></div></div>
+  <footer><div class="container"><div class="footer-bottom" style="border:0;padding:24px 0"><p style="color:rgba(255,255,255,0.5)">© 2025 Batu Adventure</p><button onclick="showPage('home')" style="background:var(--orange);color:#fff;border:none;padding:8px 20px;border-radius:8px;font-weight:700;cursor:pointer">← Kembali ke Beranda</button></div></div></footer>
+</div>
+
+<!-- ===== PAGE: OUTBOUND BROMO ===== -->
+<div class="page" id="page-outbound-bromo">
+  <div class="page-hero" style="background:linear-gradient(135deg,#1a1a2e,#4a1942)"><div class="container"><div class="breadcrumb"><a onclick="showPage('home')">Beranda</a><span>/</span><span style="color:#fff">Outbound Bromo</span></div><h1>Outbound Bromo</h1><p>Petualangan epik ke Gunung Bromo yang akan mengubah pandangan Anda tentang keindahan Indonesia</p></div></div>
+  <section class="section"><div class="container"><div class="about-grid"><div class="about-img-wrap"><img src="https://images.unsplash.com/photo-1487731272579-5db55bdb3baa?w=600&q=80" alt="Bromo" style="height:450px"></div><div class="about-content"><span class="section-label">Adventure Premium</span><h2>Matahari Terbit di <span style="color:var(--green)">Bromo</span></h2><p>Paket outbound Bromo kami menggabungkan pengalaman mendaki Gunung Bromo dengan aktivitas outbound di savana Tengger yang luar biasa. Saksikan sunrise paling indah di Jawa Timur sambil berpetualang bersama tim Anda.</p><p>Tersedia paket 1 hari, 2 hari 1 malam, hingga 3 hari 2 malam dengan berbagai aktivitas yang bisa disesuaikan dengan keinginan dan anggaran Anda.</p><div class="about-features"><div class="about-feat"><i class="fas fa-sun"></i><span>Sunrise Tour Bromo</span></div><div class="about-feat"><i class="fas fa-truck-monster"></i><span>Jeep 4WD Adventure</span></div><div class="about-feat"><i class="fas fa-horse"></i><span>Berkuda di Savana</span></div><div class="about-feat"><i class="fas fa-hotel"></i><span>Hotel Included</span></div></div><button class="btn-primary" onclick="openWA()" style="margin-top:28px;background:linear-gradient(135deg,#9c27b0,#673ab7)"><i class="fab fa-whatsapp"></i> Pesan Paket Bromo</button></div></div></div></section>
+  <div class="cta-section" style="background:linear-gradient(135deg,#9c27b0,#673ab7)"><div class="container"><h2>Jelajahi Keajaiban Bromo!</h2><p>Paket outbound Bromo terlengkap dengan pemandu profesional. Pesan sekarang sebelum kehabisan!</p><button class="btn-white" onclick="openWA()"><i class="fab fa-whatsapp"></i> Pesan Sekarang</button></div></div>
+  <footer><div class="container"><div class="footer-bottom" style="border:0;padding:24px 0"><p style="color:rgba(255,255,255,0.5)">© 2025 Batu Adventure</p><button onclick="showPage('home')" style="background:var(--orange);color:#fff;border:none;padding:8px 20px;border-radius:8px;font-weight:700;cursor:pointer">← Kembali ke Beranda</button></div></div></footer>
+</div>
+
+<!-- ===== PAGE: GATHERING ===== -->
+<div class="page" id="page-outbound-gathering">
+  <div class="page-hero"><div class="container"><div class="breadcrumb"><a onclick="showPage('home')">Beranda</a><span>/</span><span style="color:#fff">Gathering & Event</span></div><h1>Gathering & Event Organizer</h1><p>Wujudkan gathering impian perusahaan Anda di Batu Malang bersama kami</p></div></div>
+  <section class="section"><div class="container"><div class="about-grid"><div class="about-img-wrap"><img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=600&q=80" alt="Gathering" style="height:450px"></div><div class="about-content"><span class="section-label">Event Organizer</span><h2>Gathering <span style="color:var(--green)">Berkesan</span> di Batu Malang</h2><p>Kami mengelola semua kebutuhan gathering perusahaan Anda dari A sampai Z. Mulai dari venue, catering, entertainment, outbound, hingga dokumentasi — semuanya kami tangani dengan profesional.</p><p>Telah dipercaya ratusan perusahaan besar dan instansi pemerintah untuk mengelola gathering dengan peserta hingga 1000 orang.</p><div class="about-features"><div class="about-feat"><i class="fas fa-building"></i><span>Venue Indoor & Outdoor</span></div><div class="about-feat"><i class="fas fa-music"></i><span>Entertainment & Band</span></div><div class="about-feat"><i class="fas fa-gifts"></i><span>Doorprize & Hadiah</span></div><div class="about-feat"><i class="fas fa-utensils"></i><span>Catering 200-1000 Orang</span></div></div><button class="btn-primary" onclick="openWA()" style="margin-top:28px"><i class="fab fa-whatsapp"></i> Request Proposal</button></div></div></div></section>
+  <div class="cta-section"><div class="container"><h2>Gathering Impian Anda di Sini!</h2><p>Tim event organizer kami siap mewujudkan gathering terbaik untuk perusahaan Anda.</p><button class="btn-white" onclick="openWA()"><i class="fab fa-whatsapp"></i> Konsultasi Gratis</button></div></div>
+  <footer><div class="container"><div class="footer-bottom" style="border:0;padding:24px 0"><p style="color:rgba(255,255,255,0.5)">© 2025 Batu Adventure</p><button onclick="showPage('home')" style="background:var(--orange);color:#fff;border:none;padding:8px 20px;border-radius:8px;font-weight:700;cursor:pointer">← Kembali ke Beranda</button></div></div></footer>
+</div>
+
+<!-- ===== PAGE: GALERI ===== -->
+<div class="page" id="page-galeri">
+  <div class="page-hero"><div class="container"><div class="breadcrumb"><a onclick="showPage('home')">Beranda</a><span>/</span><span style="color:#fff">Galeri</span></div><h1>Galeri Foto Kegiatan</h1><p>Sekilas momen berharga dari kegiatan outbound bersama klien kami</p></div></div>
+  <section class="section"><div class="container">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+      <div style="border-radius:16px;overflow:hidden;cursor:pointer" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&q=80" style="width:100%;height:250px;object-fit:cover;display:block;transition:transform 0.4s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"></div>
+      <div style="border-radius:16px;overflow:hidden;cursor:pointer" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1551632811-561732d1e306?w=500&q=80" style="width:100%;height:250px;object-fit:cover;display:block;transition:transform 0.4s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"></div>
+      <div style="border-radius:16px;overflow:hidden;cursor:pointer" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=500&q=80" style="width:100%;height:250px;object-fit:cover;display:block;transition:transform 0.4s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"></div>
+      <div style="border-radius:16px;overflow:hidden;cursor:pointer" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=500&q=80" style="width:100%;height:250px;object-fit:cover;display:block;transition:transform 0.4s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"></div>
+      <div style="border-radius:16px;overflow:hidden;cursor:pointer" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?w=500&q=80" style="width:100%;height:250px;object-fit:cover;display:block;transition:transform 0.4s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"></div>
+      <div style="border-radius:16px;overflow:hidden;cursor:pointer" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1487731272579-5db55bdb3baa?w=500&q=80" style="width:100%;height:250px;object-fit:cover;display:block;transition:transform 0.4s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"></div>
+      <div style="border-radius:16px;overflow:hidden;cursor:pointer" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1533760881669-80db4d7b341c?w=500&q=80" style="width:100%;height:250px;object-fit:cover;display:block;transition:transform 0.4s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"></div>
+      <div style="border-radius:16px;overflow:hidden;cursor:pointer" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1502444330042-d1a1ddf9bb5b?w=500&q=80" style="width:100%;height:250px;object-fit:cover;display:block;transition:transform 0.4s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"></div>
+      <div style="border-radius:16px;overflow:hidden;cursor:pointer" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?w=500&q=80" style="width:100%;height:250px;object-fit:cover;display:block;transition:transform 0.4s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"></div>
+    </div>
+  </div></section>
+  <footer><div class="container"><div class="footer-bottom" style="border:0;padding:24px 0;background:var(--green-dark)"><p style="color:rgba(255,255,255,0.5)">© 2025 Batu Adventure</p><button onclick="showPage('home')" style="background:var(--orange);color:#fff;border:none;padding:8px 20px;border-radius:8px;font-weight:700;cursor:pointer">← Kembali ke Beranda</button></div></div></footer>
+</div>
+
+<!-- ===== PAGE: BLOG LIST ===== -->
+<div class="page" id="page-blog">
+  <div class="page-hero"><div class="container"><div class="breadcrumb"><a onclick="showPage('home')">Beranda</a><span>/</span><span style="color:#fff">Blog</span></div><h1>Blog & Tips Outbound</h1><p>Artikel, tips, dan informasi seputar wisata dan outbound Batu Malang</p></div></div>
+  <section class="section"><div class="container">
+    <div class="blog-grid">
+      <div class="blog-card" onclick="showBlogPost('blog-1')"><div class="blog-img"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=500&q=80" alt="Blog 1"></div><div class="blog-body"><div class="blog-meta"><span class="blog-cat">Tips Outbound</span><span class="blog-date"><i class="fas fa-calendar"></i> 15 Jan 2025</span></div><h3>5 Manfaat Outbound untuk Kekompakan Tim Kerja</h3><p>Outbound bukan sekadar kegiatan seru, tetapi memiliki dampak nyata terhadap produktivitas dan kekompakan tim Anda...</p></div><div class="blog-footer"><span class="blog-author"><i class="fas fa-user-circle" style="color:var(--green)"></i> Admin</span><a class="blog-read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a></div></div>
+      <div class="blog-card" onclick="showBlogPost('blog-2')"><div class="blog-img"><img src="https://images.unsplash.com/photo-1487731272579-5db55bdb3baa?w=500&q=80" alt="Blog 2"></div><div class="blog-body"><div class="blog-meta"><span class="blog-cat">Wisata</span><span class="blog-date"><i class="fas fa-calendar"></i> 10 Jan 2025</span></div><h3>Panduan Lengkap Wisata ke Gunung Bromo dari Malang</h3><p>Gunung Bromo adalah salah satu destinasi wisata paling ikonik di Indonesia. Berikut panduan lengkap perjalanan Anda...</p></div><div class="blog-footer"><span class="blog-author"><i class="fas fa-user-circle" style="color:var(--green)"></i> Admin</span><a class="blog-read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a></div></div>
+      <div class="blog-card" onclick="showBlogPost('blog-3')"><div class="blog-img"><img src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?w=500&q=80" alt="Blog 3"></div><div class="blog-body"><div class="blog-meta"><span class="blog-cat">Team Building</span><span class="blog-date"><i class="fas fa-calendar"></i> 5 Jan 2025</span></div><h3>Cara Memilih Vendor Outbound yang Tepat untuk Perusahaan</h3><p>Memilih vendor outbound yang tepat adalah kunci keberhasilan team building perusahaan Anda. Ini tips memilihnya...</p></div><div class="blog-footer"><span class="blog-author"><i class="fas fa-user-circle" style="color:var(--green)"></i> Admin</span><a class="blog-read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a></div></div>
+      <div class="blog-card" onclick="showBlogPost('blog-4')"><div class="blog-img"><img src="https://images.unsplash.com/photo-1502444330042-d1a1ddf9bb5b?w=500&q=80" alt="Blog 4"></div><div class="blog-body"><div class="blog-meta"><span class="blog-cat">Destinasi</span><span class="blog-date"><i class="fas fa-calendar"></i> 28 Des 2024</span></div><h3>10 Destinasi Wisata Terbaik di Batu Malang yang Wajib Dikunjungi</h3><p>Kota Batu Malang menyimpan banyak keajaiban wisata. Dari BjB Waterpark hingga Jatim Park, ini 10 destinasi terbaik...</p></div><div class="blog-footer"><span class="blog-author"><i class="fas fa-user-circle" style="color:var(--green)"></i> Admin</span><a class="blog-read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a></div></div>
+      <div class="blog-card" onclick="showBlogPost('blog-5')"><div class="blog-img"><img src="https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=500&q=80" alt="Blog 5"></div><div class="blog-body"><div class="blog-meta"><span class="blog-cat">Tips Outbound</span><span class="blog-date"><i class="fas fa-calendar"></i> 20 Des 2024</span></div><h3>Persiapan Outbound Anak-anak: Panduan untuk Orang Tua</h3><p>Mempersiapkan anak untuk kegiatan outbound memerlukan perhatian khusus. Berikut tips yang perlu diketahui orang tua...</p></div><div class="blog-footer"><span class="blog-author"><i class="fas fa-user-circle" style="color:var(--green)"></i> Admin</span><a class="blog-read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a></div></div>
+      <div class="blog-card" onclick="showBlogPost('blog-6')"><div class="blog-img"><img src="https://images.unsplash.com/photo-1533760881669-80db4d7b341c?w=500&q=80" alt="Blog 6"></div><div class="blog-body"><div class="blog-meta"><span class="blog-cat">Kuliner</span><span class="blog-date"><i class="fas fa-calendar"></i> 15 Des 2024</span></div><h3>Kuliner Khas Batu Malang yang Wajib Dicoba Saat Wisata</h3><p>Selain wisata alam, Batu Malang juga terkenal dengan kuliner khasnya. Dari apel Malang hingga bakso legendaris...</p></div><div class="blog-footer"><span class="blog-author"><i class="fas fa-user-circle" style="color:var(--green)"></i> Admin</span><a class="blog-read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a></div></div>
+    </div>
+  </div></section>
+  <footer><div class="container"><div class="footer-bottom" style="border:0;padding:24px 0;background:var(--green-dark)"><p style="color:rgba(255,255,255,0.5)">© 2025 Batu Adventure</p><button onclick="showPage('home')" style="background:var(--orange);color:#fff;border:none;padding:8px 20px;border-radius:8px;font-weight:700;cursor:pointer">← Kembali ke Beranda</button></div></div></footer>
+</div>
+
+<!-- ===== BLOG POST PAGES ===== -->
+<!-- Blog Post 1 -->
+<div class="page" id="page-blog-1">
+  <div class="blog-post-hero">
+    <div class="container">
+      <div class="blog-breadcrumb"><a onclick="showPage('home')">Beranda</a><span>/</span><a onclick="showPage('blog')">Blog</a><span>/</span><span style="color:#fff">Artikel</span></div>
+      <span class="blog-cat" style="margin-bottom:16px;display:inline-block">Tips Outbound</span>
+      <h1>5 Manfaat Outbound untuk Kekompakan Tim Kerja</h1>
+      <div class="blog-post-meta">
+        <span><i class="fas fa-user"></i> Admin Batu Adventure</span>
+        <span><i class="fas fa-calendar"></i> 15 Januari 2025</span>
+        <span><i class="fas fa-clock"></i> 5 menit baca</span>
+        <span><i class="fas fa-eye"></i> 1,234 views</span>
+      </div>
+    </div>
+  </div>
+  <div class="blog-post-content"><div class="container"><div class="blog-post-grid">
+    <div class="blog-post-body">
+      <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80" alt="Outbound Team Building">
+      <p>Kegiatan outbound sering dianggap hanya sebagai hiburan semata. Namun, tahukah Anda bahwa outbound yang dirancang dengan baik dapat memberikan dampak signifikan terhadap kinerja dan kekompakan tim kerja Anda?</p>
+      <h2>1. Meningkatkan Komunikasi Antar Anggota Tim</h2>
+      <p>Aktivitas outbound memaksa peserta untuk berkomunikasi secara efektif dalam tekanan dan situasi yang tidak familiar. Game-game seperti "blind trust walk" atau "team puzzle" mengharuskan anggota tim untuk saling menjelaskan, mendengarkan, dan berkolaborasi demi mencapai tujuan bersama.</p>
+      <p>Ketika kembali ke lingkungan kerja, pola komunikasi yang telah terbentuk selama outbound akan terbawa dan menjadi kebiasaan positif dalam keseharian kerja.</p>
+      <h2>2. Membangun Rasa Percaya (Trust Building)</h2>
+      <p>Aktivitas seperti flying fox, rappelling, atau trust fall sangat efektif dalam membangun kepercayaan antar anggota tim. Ketika seseorang mau berpasrah diri kepada rekan kerjanya, itu menunjukkan level kepercayaan yang tinggi.</p>
+      <p>Rasa percaya yang dibangun selama outbound akan memperkuat hubungan kerja dan membuat delegasi tugas menjadi lebih efektif di kantor.</p>
+      <h2>3. Mengidentifikasi Pemimpin Alami</h2>
+      <p>Dalam situasi outbound yang penuh tantangan, pemimpin alami dalam tim akan muncul dengan sendirinya. Manajer HR dan pemimpin perusahaan dapat memanfaatkan kesempatan ini untuk mengidentifikasi individu-individu berpotensi yang mungkin belum terlihat menonjol di lingkungan kantor.</p>
+      <h2>4. Meningkatkan Kreativitas dan Problem Solving</h2>
+      <p>Banyak game outbound dirancang untuk menguji kemampuan berpikir lateral dan problem solving tim. Tantangan-tantangan seperti "escape room outdoor" atau "bridge building challenge" mendorong peserta untuk berpikir di luar kotak dan menemukan solusi kreatif.</p>
+      <h2>5. Mengurangi Stres dan Meningkatkan Semangat Kerja</h2>
+      <p>Berada di alam terbuka, jauh dari meja kerja dan layar komputer, memberikan refreshing yang sangat dibutuhkan. Studi menunjukkan bahwa karyawan yang rutin mengikuti kegiatan team building memiliki tingkat kepuasan kerja dan produktivitas yang lebih tinggi.</p>
+      <div style="background:rgba(26,124,62,0.05);border-left:4px solid var(--green);padding:20px;border-radius:0 12px 12px 0;margin:24px 0">
+        <p style="color:var(--green-dark);font-weight:600;font-size:15px;font-style:normal">"Investasi dalam team building adalah investasi dalam produktivitas dan kebahagiaan karyawan Anda."</p>
+      </div>
+      <h2>Kesimpulan</h2>
+      <p>Outbound yang dirancang dan difasilitasi dengan baik bukan sekadar hiburan — ia adalah alat pengembangan SDM yang powerful. Pastikan Anda memilih vendor outbound yang berpengalaman dan memiliki pemahaman tentang dinamika tim kerja.</p>
+      <div style="background:var(--cream);border-radius:12px;padding:24px;margin-top:32px;text-align:center">
+        <p style="font-weight:700;margin-bottom:12px">Ingin mengadakan outbound untuk tim Anda?</p>
+        <button class="btn-primary" onclick="openWA()"><i class="fab fa-whatsapp"></i> Konsultasi Gratis Sekarang</button>
+      </div>
+    </div>
+    <div class="blog-sidebar">
+      <div class="sidebar-widget">
+        <h4>Artikel Terkait</h4>
+        <div class="sidebar-post" onclick="showBlogPost('blog-3')"><img src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?w=100&q=70" alt=""><div class="sidebar-post-text"><h5>Cara Memilih Vendor Outbound yang Tepat</h5><span>5 Jan 2025</span></div></div>
+        <div class="sidebar-post" onclick="showBlogPost('blog-5')"><img src="https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=100&q=70" alt=""><div class="sidebar-post-text"><h5>Persiapan Outbound Anak-anak</h5><span>20 Des 2024</span></div></div>
+        <div class="sidebar-post" onclick="showBlogPost('blog-2')"><img src="https://images.unsplash.com/photo-1487731272579-5db55bdb3baa?w=100&q=70" alt=""><div class="sidebar-post-text"><h5>Panduan Wisata ke Bromo dari Malang</h5><span>10 Jan 2025</span></div></div>
+      </div>
+      <div class="sidebar-widget">
+        <h4>Tag Artikel</h4>
+        <div class="tag-cloud">
+          <span class="tag">Outbound</span><span class="tag">Team Building</span><span class="tag">Batu Malang</span><span class="tag">Wisata</span><span class="tag">Bromo</span><span class="tag">Tips</span><span class="tag">HR</span><span class="tag">Perusahaan</span>
+        </div>
+      </div>
+      <div class="sidebar-widget" style="background:linear-gradient(135deg,var(--green),var(--green-light));color:#fff">
+        <h4 style="color:#fff;border-color:rgba(255,255,255,0.3)">Konsultasi Gratis</h4>
+        <p style="font-size:13px;opacity:0.9;margin-bottom:16px;font-family:'Lora',serif">Rencanakan outbound impian Anda bersama tim ahli kami sekarang!</p>
+        <button class="btn-white" style="width:100%;justify-content:center" onclick="openWA()"><i class="fab fa-whatsapp"></i> Chat Sekarang</button>
+      </div>
+    </div>
+  </div></div></div>
+  <footer><div class="container"><div class="footer-bottom" style="border:0;padding:24px 0;background:var(--green-dark)"><p style="color:rgba(255,255,255,0.5)">© 2025 Batu Adventure</p><button onclick="showPage('blog')" style="background:var(--orange);color:#fff;border:none;padding:8px 20px;border-radius:8px;font-weight:700;cursor:pointer">← Kembali ke Blog</button></div></div></footer>
+</div>
+
+<!-- Blog Post 2 -->
+<div class="page" id="page-blog-2">
+  <div class="blog-post-hero" style="background:linear-gradient(135deg,#1a1a2e,#4a1942)">
+    <div class="container">
+      <div class="blog-breadcrumb"><a onclick="showPage('home')">Beranda</a><span>/</span><a onclick="showPage('blog')">Blog</a><span>/</span><span style="color:#fff">Artikel</span></div>
+      <span class="blog-cat" style="margin-bottom:16px;display:inline-block;background:#9c27b0">Wisata</span>
+      <h1>Panduan Lengkap Wisata ke Gunung Bromo dari Malang</h1>
+      <div class="blog-post-meta"><span><i class="fas fa-user"></i> Admin</span><span><i class="fas fa-calendar"></i> 10 Januari 2025</span><span><i class="fas fa-clock"></i> 7 menit baca</span></div>
+    </div>
+  </div>
+  <div class="blog-post-content"><div class="container"><div class="blog-post-grid">
+    <div class="blog-post-body">
+      <img src="https://images.unsplash.com/photo-1487731272579-5db55bdb3baa?w=800&q=80" alt="Gunung Bromo">
+      <p>Gunung Bromo adalah salah satu keajaiban alam Indonesia yang wajib dikunjungi setidaknya sekali seumur hidup. Dengan pemandangan kaldera yang dramatis, lautan pasir yang luas, dan matahari terbit yang memukau, Bromo menawarkan pengalaman yang sulit dilupakan.</p>
+      <h2>Cara Menuju Gunung Bromo dari Malang</h2>
+      <p>Dari Kota Malang, perjalanan ke Bromo memakan waktu sekitar 2-3 jam dengan kendaraan pribadi atau sewa. Rute yang paling umum adalah melalui Tumpang atau Lawang, kemudian menuju Cemoro Lawang sebagai pintu masuk utama.</p>
+      <h2>Waktu Terbaik Berkunjung</h2>
+      <p>Musim kemarau (April-Oktober) adalah waktu terbaik untuk mengunjungi Bromo. Langit yang cerah akan membuat sunrise terlihat jauh lebih spektakuler. Hindari berkunjung saat musim hujan karena visibility bisa sangat terbatas.</p>
+      <ul>
+        <li>April – Juni: Terbaik untuk sunrise dan pemandangan</li>
+        <li>Juli – September: Suhu dingin tapi cuaca sangat cerah</li>
+        <li>Desember – Maret: Musim hujan, kurang direkomendasikan</li>
+      </ul>
+      <h2>Aktivitas Seru di Bromo</h2>
+      <p>Selain menikmati sunrise dari Penanjakan, banyak aktivitas menarik yang bisa dilakukan di kawasan Bromo:</p>
+      <ul>
+        <li>Naik Jeep mengelilingi lautan pasir</li>
+        <li>Berkuda di padang savana Tengger</li>
+        <li>Mendaki ke bibir kawah Bromo</li>
+        <li>Mengunjungi Pura Luhur Poten</li>
+        <li>Outbound di savana dengan pemandangan Bromo</li>
+      </ul>
+      <h2>Tips Persiapan</h2>
+      <p>Suhu di Bromo bisa sangat dingin terutama dini hari, mencapai 5-10°C. Pastikan membawa jaket tebal, sarung tangan, dan penutup kepala. Jangan lupa membawa masker atau penutup hidung karena abu vulkanik bisa sangat mengganggu.</p>
+      <div style="background:rgba(26,124,62,0.05);border-left:4px solid var(--green);padding:20px;border-radius:0 12px 12px 0;margin:24px 0">
+        <p style="color:var(--green-dark);font-weight:600;font-size:15px;font-style:normal">💡 Tips: Pesan paket outbound Bromo bersama Batu Adventure untuk pengalaman yang lebih lengkap dan terorganisir!</p>
+      </div>
+      <div style="background:var(--cream);border-radius:12px;padding:24px;margin-top:32px;text-align:center"><p style="font-weight:700;margin-bottom:12px">Tertarik dengan Paket Outbound Bromo kami?</p><button class="btn-primary" onclick="showPage('outbound-bromo')"><i class="fas fa-volcano"></i> Lihat Paket Bromo</button></div>
+    </div>
+    <div class="blog-sidebar">
+      <div class="sidebar-widget"><h4>Artikel Terkait</h4><div class="sidebar-post" onclick="showBlogPost('blog-1')"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=100&q=70" alt=""><div class="sidebar-post-text"><h5>5 Manfaat Outbound untuk Tim</h5><span>15 Jan 2025</span></div></div><div class="sidebar-post" onclick="showBlogPost('blog-4')"><img src="https://images.unsplash.com/photo-1502444330042-d1a1ddf9bb5b?w=100&q=70" alt=""><div class="sidebar-post-text"><h5>10 Destinasi Terbaik Batu Malang</h5><span>28 Des 2024</span></div></div></div>
+      <div class="sidebar-widget"><h4>Tag Artikel</h4><div class="tag-cloud"><span class="tag">Bromo</span><span class="tag">Wisata Jawa Timur</span><span class="tag">Sunrise</span><span class="tag">Malang</span><span class="tag">Tips Wisata</span></div></div>
+      <div class="sidebar-widget" style="background:linear-gradient(135deg,#9c27b0,#673ab7);color:#fff"><h4 style="color:#fff;border-color:rgba(255,255,255,0.3)">Paket Outbound Bromo</h4><p style="font-size:13px;opacity:0.9;margin-bottom:16px;font-family:'Lora',serif">Jelajahi Bromo dengan paket premium kami. Sudah termasuk akomodasi!</p><button class="btn-white" style="width:100%;justify-content:center" onclick="openWA()"><i class="fab fa-whatsapp"></i> Tanya Harga</button></div>
+    </div>
+  </div></div></div>
+  <footer><div class="container"><div class="footer-bottom" style="border:0;padding:24px 0;background:var(--green-dark)"><p style="color:rgba(255,255,255,0.5)">© 2025 Batu Adventure</p><button onclick="showPage('blog')" style="background:var(--orange);color:#fff;border:none;padding:8px 20px;border-radius:8px;font-weight:700;cursor:pointer">← Kembali ke Blog</button></div></div></footer>
+</div>
+
+<!-- Blog Post 3 -->
+<div class="page" id="page-blog-3">
+  <div class="blog-post-hero"><div class="container"><div class="blog-breadcrumb"><a onclick="showPage('home')">Beranda</a><span>/</span><a onclick="showPage('blog')">Blog</a><span>/</span><span style="color:#fff">Artikel</span></div><span class="blog-cat" style="margin-bottom:16px;display:inline-block">Team Building</span><h1>Cara Memilih Vendor Outbound yang Tepat untuk Perusahaan</h1><div class="blog-post-meta"><span><i class="fas fa-user"></i> Admin</span><span><i class="fas fa-calendar"></i> 5 Januari 2025</span><span><i class="fas fa-clock"></i> 6 menit baca</span></div></div></div>
+  <div class="blog-post-content"><div class="container"><div class="blog-post-grid">
+    <div class="blog-post-body">
+      <img src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?w=800&q=80" alt="Vendor Outbound">
+      <p>Memilih vendor outbound yang tepat adalah investasi penting bagi perusahaan. Pilihan yang salah tidak hanya membuang anggaran, tetapi juga bisa memberikan pengalaman buruk bagi karyawan dan bahkan menimbulkan risiko keselamatan.</p>
+      <h2>1. Cek Legalitas dan Pengalaman</h2>
+      <p>Pastikan vendor memiliki izin usaha yang sah dan rekam jejak yang terbukti. Tanyakan berapa lama mereka beroperasi dan berapa banyak klien yang telah mereka layani. Vendor yang berpengalaman biasanya memiliki portofolio yang bisa ditunjukkan.</p>
+      <h2>2. Keamanan adalah Prioritas Utama</h2>
+      <p>Tanyakan tentang standar keamanan yang diterapkan, apakah peralatan sudah tersertifikasi, apakah instruktur memiliki sertifikat keselamatan, dan apakah tersedia asuransi untuk peserta.</p>
+      <h2>3. Kemampuan Customisasi Program</h2>
+      <p>Setiap perusahaan memiliki kebutuhan yang berbeda. Vendor yang baik harus mampu merancang program yang sesuai dengan tujuan, jumlah peserta, anggaran, dan karakteristik perusahaan Anda.</p>
+      <h2>4. Transparansi Harga</h2>
+      <p>Minta penawaran harga yang detail dan pastikan tidak ada biaya tersembunyi. Vendor yang profesional akan memberikan rincian biaya yang jelas dan transparan.</p>
+      <h2>5. Testimoni dan Referensi</h2>
+      <p>Cari ulasan dari klien sebelumnya. Anda bisa meminta vendor untuk memberikan referensi dari klien mereka atau mencari ulasan di internet dan media sosial.</p>
+      <h3>Checklist Memilih Vendor Outbound</h3>
+      <ul>
+        <li>✅ Memiliki izin usaha yang sah</li>
+        <li>✅ Instruktur bersertifikat dan berpengalaman</li>
+        <li>✅ Peralatan standar keselamatan internasional</li>
+        <li>✅ Asuransi peserta tersedia</li>
+        <li>✅ Program dapat dikustomisasi</li>
+        <li>✅ Harga transparan tanpa biaya tersembunyi</li>
+        <li>✅ Testimoni dan portofolio yang terbukti</li>
+      </ul>
+      <div style="background:var(--cream);border-radius:12px;padding:24px;margin-top:32px;text-align:center"><p style="font-weight:700;margin-bottom:12px">Batu Adventure memenuhi semua kriteria di atas!</p><button class="btn-primary" onclick="navigateToContact()"><i class="fas fa-phone"></i> Hubungi Kami</button></div>
+    </div>
+    <div class="blog-sidebar">
+      <div class="sidebar-widget"><h4>Artikel Terkait</h4><div class="sidebar-post" onclick="showBlogPost('blog-1')"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=100&q=70" alt=""><div class="sidebar-post-text"><h5>5 Manfaat Outbound untuk Tim</h5><span>15 Jan 2025</span></div></div><div class="sidebar-post" onclick="showBlogPost('blog-5')"><img src="https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=100&q=70" alt=""><div class="sidebar-post-text"><h5>Persiapan Outbound Anak</h5><span>20 Des 2024</span></div></div></div>
+      <div class="sidebar-widget"><h4>Tag Artikel</h4><div class="tag-cloud"><span class="tag">Vendor</span><span class="tag">Tips</span><span class="tag">Perusahaan</span><span class="tag">HR</span><span class="tag">Outbound</span></div></div>
+      <div class="sidebar-widget" style="background:linear-gradient(135deg,var(--green),var(--green-light));color:#fff"><h4 style="color:#fff;border-color:rgba(255,255,255,0.3)">Konsultasi Gratis</h4><p style="font-size:13px;opacity:0.9;margin-bottom:16px;font-family:'Lora',serif">Tim kami siap membantu merancang program outbound terbaik untuk perusahaan Anda!</p><button class="btn-white" style="width:100%;justify-content:center" onclick="openWA()"><i class="fab fa-whatsapp"></i> Chat Sekarang</button></div>
+    </div>
+  </div></div></div>
+  <footer><div class="container"><div class="footer-bottom" style="border:0;padding:24px 0;background:var(--green-dark)"><p style="color:rgba(255,255,255,0.5)">© 2025 Batu Adventure</p><button onclick="showPage('blog')" style="background:var(--orange);color:#fff;border:none;padding:8px 20px;border-radius:8px;font-weight:700;cursor:pointer">← Kembali ke Blog</button></div></div></footer>
+</div>
+
+<!-- Blog Post 4 -->
+<div class="page" id="page-blog-4">
+  <div class="blog-post-hero"><div class="container"><div class="blog-breadcrumb"><a onclick="showPage('home')">Beranda</a><span>/</span><a onclick="showPage('blog')">Blog</a><span>/</span><span style="color:#fff">Artikel</span></div><span class="blog-cat" style="margin-bottom:16px;display:inline-block;background:#2196f3">Destinasi</span><h1>10 Destinasi Wisata Terbaik di Batu Malang yang Wajib Dikunjungi</h1><div class="blog-post-meta"><span><i class="fas fa-user"></i> Admin</span><span><i class="fas fa-calendar"></i> 28 Desember 2024</span><span><i class="fas fa-clock"></i> 8 menit baca</span></div></div></div>
+  <div class="blog-post-content"><div class="container"><div class="blog-post-grid">
+    <div class="blog-post-body">
+      <img src="https://images.unsplash.com/photo-1502444330042-d1a1ddf9bb5b?w=800&q=80" alt="Batu Malang">
+      <p>Kota Batu di Malang Raya bukan sekadar kota biasa. Dikelilingi pegunungan dan dikenal sebagai "Swiss-nya Indonesia", Batu menawarkan beragam destinasi wisata yang memukau untuk semua kalangan.</p>
+      <h2>1. Jatim Park 1, 2, dan 3</h2>
+      <p>Kompleks wisata keluarga terlengkap di Jawa Timur yang menawarkan wahana bermain, museum, dan berbagai atraksi menarik untuk semua usia.</p>
+      <h2>2. Eco Green Park</h2>
+      <p>Taman satwa dan edukasi lingkungan hidup yang luas dengan koleksi burung eksotis dan berbagai hewan langka dari seluruh dunia.</p>
+      <h2>3. Museum Angkut</h2>
+      <p>Museum transportasi terbesar di Asia Tenggara yang memamerkan koleksi kendaraan dari berbagai era sejarah dalam setting yang sangat instagramable.</p>
+      <h2>4. Batu Night Spectacular (BNS)</h2>
+      <p>Taman hiburan malam dengan berbagai wahana seru, bazar kuliner, dan pertunjukan cahaya yang memukau.</p>
+      <h2>5. Selecta</h2>
+      <p>Taman rekreasi legendaris di Batu yang sudah berdiri sejak 1928 dengan taman bunga yang indah dan kolam renang berair segar.</p>
+      <h2>6. Kebun Apel Batu</h2>
+      <p>Petik apel langsung dari pohonnya dan rasakan sensasi berbeda menikmati apel segar di tengah kebun yang hijau dan sejuk.</p>
+      <h2>7. Coban Rondo Waterfall</h2>
+      <p>Air terjun setinggi 84 meter yang menakjubkan dikelilingi hutan pinus yang rindang, cocok untuk yang suka wisata alam.</p>
+      <h2>8. Pujon Kidul Café</h2>
+      <p>Desa wisata yang terkenal dengan café sawah dan pemandangan alam pedesaan yang menawan. Sempurna untuk foto-foto Instagram.</p>
+      <h2>9. Predator Fun Park</h2>
+      <p>Taman bertema dinosaurus yang seru untuk anak-anak dengan berbagai wahana dan pertunjukan interaktif.</p>
+      <h2>10. Gunung Banyak (Paralayang Batu)</h2>
+      <p>Spot terbaik untuk menyaksikan matahari terbenam di Batu Malang sekaligus olahraga paralayang yang mendebarkan.</p>
+      <div style="background:var(--cream);border-radius:12px;padding:24px;margin-top:32px;text-align:center"><p style="font-weight:700;margin-bottom:12px">Gabungkan wisata dengan outbound seru di Batu Malang!</p><button class="btn-primary" onclick="showPage('outbound-wisata')"><i class="fas fa-map-marked-alt"></i> Lihat Paket Wisata</button></div>
+    </div>
+    <div class="blog-sidebar">
+      <div class="sidebar-widget"><h4>Artikel Terkait</h4><div class="sidebar-post" onclick="showBlogPost('blog-2')"><img src="https://images.unsplash.com/photo-1487731272579-5db55bdb3baa?w=100&q=70" alt=""><div class="sidebar-post-text"><h5>Panduan Wisata ke Bromo dari Malang</h5><span>10 Jan 2025</span></div></div><div class="sidebar-post" onclick="showBlogPost('blog-6')"><img src="https://images.unsplash.com/photo-1533760881669-80db4d7b341c?w=100&q=70" alt=""><div class="sidebar-post-text"><h5>Kuliner Khas Batu Malang</h5><span>15 Des 2024</span></div></div></div>
+      <div class="sidebar-widget"><h4>Tag Artikel</h4><div class="tag-cloud"><span class="tag">Batu Malang</span><span class="tag">Wisata</span><span class="tag">Destinasi</span><span class="tag">Jawa Timur</span><span class="tag">Family Trip</span></div></div>
+      <div class="sidebar-widget" style="background:linear-gradient(135deg,var(--green),var(--green-light));color:#fff"><h4 style="color:#fff;border-color:rgba(255,255,255,0.3)">Paket Wisata Batu</h4><p style="font-size:13px;opacity:0.9;margin-bottom:16px">Jelajahi semua destinasi terbaik Batu Malang bersama kami dengan paket terjangkau!</p><button class="btn-white" style="width:100%;justify-content:center" onclick="openWA()"><i class="fab fa-whatsapp"></i> Pesan Sekarang</button></div>
+    </div>
+  </div></div></div>
+  <footer><div class="container"><div class="footer-bottom" style="border:0;padding:24px 0;background:var(--green-dark)"><p style="color:rgba(255,255,255,0.5)">© 2025 Batu Adventure</p><button onclick="showPage('blog')" style="background:var(--orange);color:#fff;border:none;padding:8px 20px;border-radius:8px;font-weight:700;cursor:pointer">← Kembali ke Blog</button></div></div></footer>
+</div>
+
+<!-- Blog Post 5 -->
+<div class="page" id="page-blog-5">
+  <div class="blog-post-hero"><div class="container"><div class="blog-breadcrumb"><a onclick="showPage('home')">Beranda</a><span>/</span><a onclick="showPage('blog')">Blog</a><span>/</span><span style="color:#fff">Artikel</span></div><span class="blog-cat" style="margin-bottom:16px;display:inline-block">Tips Outbound</span><h1>Persiapan Outbound Anak-anak: Panduan untuk Orang Tua</h1><div class="blog-post-meta"><span><i class="fas fa-user"></i> Admin</span><span><i class="fas fa-calendar"></i> 20 Desember 2024</span><span><i class="fas fa-clock"></i> 5 menit baca</span></div></div></div>
+  <div class="blog-post-content"><div class="container"><div class="blog-post-grid">
+    <div class="blog-post-body">
+      <img src="https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=800&q=80" alt="Outbound Anak">
+      <p>Outbound untuk anak-anak berbeda dengan outbound dewasa. Perlu persiapan yang lebih matang dan perhatian ekstra dari orang tua dan penyelenggara untuk memastikan keamanan dan kenyamanan si kecil.</p>
+      <h2>Persiapan Fisik Anak</h2>
+      <p>Pastikan anak dalam kondisi sehat sebelum mengikuti outbound. Jika anak memiliki kondisi kesehatan tertentu seperti asma atau alergi, informasikan kepada panitia sebelumnya agar tim medis dapat bersiap.</p>
+      <h2>Perlengkapan yang Perlu Dibawa</h2>
+      <ul>
+        <li>Pakaian nyaman dan menyerap keringat</li>
+        <li>Alas kaki yang tidak licin (sandal gunung atau sepatu olahraga)</li>
+        <li>Topi dan tabir surya SPF 30+</li>
+        <li>Air minum yang cukup</li>
+        <li>Obat-obatan pribadi jika ada</li>
+        <li>Baju ganti 1-2 set</li>
+      </ul>
+      <h2>Persiapan Mental Anak</h2>
+      <p>Jelaskan kepada anak apa yang akan dilakukan selama outbound. Berikan semangat dan kepercayaan diri. Untuk anak yang pemalu atau introvert, dorong mereka untuk mencoba tapi jangan memaksa.</p>
+      <h2>Komunikasi dengan Panitia</h2>
+      <p>Tanyakan detail program, jumlah instruktur per anak, fasilitas kesehatan yang tersedia, dan bagaimana penanganan darurat dilakukan. Vendor yang baik akan dengan senang hati menjawab semua pertanyaan Anda.</p>
+      <div style="background:rgba(26,124,62,0.05);border-left:4px solid var(--green);padding:20px;border-radius:0 12px 12px 0;margin:24px 0"><p style="color:var(--green-dark);font-weight:600;font-size:15px;font-style:normal">💡 Di Batu Adventure, kami memiliki rasio 1 instruktur untuk setiap 10 anak, memastikan pengawasan optimal selama kegiatan.</p></div>
+      <div style="background:var(--cream);border-radius:12px;padding:24px;margin-top:32px;text-align:center"><p style="font-weight:700;margin-bottom:12px">Percayakan outbound anak Anda kepada kami!</p><button class="btn-primary" onclick="openWA()"><i class="fab fa-whatsapp"></i> Tanya Detail Program</button></div>
+    </div>
+    <div class="blog-sidebar">
+      <div class="sidebar-widget"><h4>Artikel Terkait</h4><div class="sidebar-post" onclick="showBlogPost('blog-1')"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=100&q=70" alt=""><div class="sidebar-post-text"><h5>5 Manfaat Outbound untuk Tim</h5><span>15 Jan 2025</span></div></div><div class="sidebar-post" onclick="showBlogPost('blog-3')"><img src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?w=100&q=70" alt=""><div class="sidebar-post-text"><h5>Cara Memilih Vendor Outbound</h5><span>5 Jan 2025</span></div></div></div>
+      <div class="sidebar-widget"><h4>Tag Artikel</h4><div class="tag-cloud"><span class="tag">Anak</span><span class="tag">Sekolah</span><span class="tag">Tips</span><span class="tag">Outbound</span><span class="tag">Keamanan</span></div></div>
+      <div class="sidebar-widget" style="background:linear-gradient(135deg,var(--green),var(--green-light));color:#fff"><h4 style="color:#fff;border-color:rgba(255,255,255,0.3)">Outbound Anak Sekolah</h4><p style="font-size:13px;opacity:0.9;margin-bottom:16px">Program khusus outbound dan wisata edukasi untuk siswa SD, SMP, dan SMA!</p><button class="btn-white" style="width:100%;justify-content:center" onclick="openWA()"><i class="fab fa-whatsapp"></i> Info Program</button></div>
+    </div>
+  </div></div></div>
+  <footer><div class="container"><div class="footer-bottom" style="border:0;padding:24px 0;background:var(--green-dark)"><p style="color:rgba(255,255,255,0.5)">© 2025 Batu Adventure</p><button onclick="showPage('blog')" style="background:var(--orange);color:#fff;border:none;padding:8px 20px;border-radius:8px;font-weight:700;cursor:pointer">← Kembali ke Blog</button></div></div></footer>
+</div>
+
+<!-- Blog Post 6 -->
+<div class="page" id="page-blog-6">
+  <div class="blog-post-hero" style="background:linear-gradient(135deg,#bf360c,#e64a19)"><div class="container"><div class="blog-breadcrumb"><a onclick="showPage('home')">Beranda</a><span>/</span><a onclick="showPage('blog')">Blog</a><span>/</span><span style="color:#fff">Artikel</span></div><span class="blog-cat" style="margin-bottom:16px;display:inline-block;background:#ff5722">Kuliner</span><h1>Kuliner Khas Batu Malang yang Wajib Dicoba Saat Wisata</h1><div class="blog-post-meta"><span><i class="fas fa-user"></i> Admin</span><span><i class="fas fa-calendar"></i> 15 Desember 2024</span><span><i class="fas fa-clock"></i> 4 menit baca</span></div></div></div>
+  <div class="blog-post-content"><div class="container"><div class="blog-post-grid">
+    <div class="blog-post-body">
+      <img src="https://images.unsplash.com/photo-1533760881669-80db4d7b341c?w=800&q=80" alt="Kuliner Malang">
+      <p>Wisata ke Batu Malang tidak lengkap tanpa mencicipi kuliner khasnya yang lezat. Dari camilan hingga makanan berat, Batu Malang menawarkan pengalaman kuliner yang tak terlupakan.</p>
+      <h2>1. Apel Malang dan Olahannya</h2>
+      <p>Apel Malang adalah primadona kuliner Batu. Tidak hanya dijual sebagai buah segar, apel juga diolah menjadi keripik apel, sari apel, dodol apel, dan berbagai olahan unik lainnya. Jangan pulang tanpa membawa oleh-oleh apel!</p>
+      <h2>2. Bakso Malang</h2>
+      <p>Bakso Malang berbeda dengan bakso di daerah lain. Disajikan dengan berbagai topping seperti tahu isi, pangsit goreng, dan perkedel, bakso Malang adalah comfort food yang sempurna setelah aktivitas outbound.</p>
+      <h2>3. Cwie Mie Malang</h2>
+      <p>Mie tipis dengan topping ayam cincang, pangsit goreng, dan acar, disajikan dengan kuah kaldu yang gurih. Ini adalah menu sarapan favorit warga Malang!</p>
+      <h2>4. Sate Gebug</h2>
+      <p>Sate khas Malang yang dagingnya digebug (dipukul) terlebih dahulu agar empuk. Disajikan dengan bumbu kacang khas Malang yang lebih encer dan segar.</p>
+      <h2>5. Pecel Kawi</h2>
+      <p>Pecel khas Malang dengan sayuran segar dan bumbu kacang pedas manis. Dimakan dengan nasi putih hangat dan tempe goreng, sempurna!</p>
+      <h2>Pasar Oleh-oleh Rekomendasi</h2>
+      <ul>
+        <li>Pasar Wisata Kota Batu – pusat oleh-oleh terlengkap</li>
+        <li>Jalan Semeru – pusat toko oleh-oleh keripik apel</li>
+        <li>Pasar Batu – untuk belanja sayur dan buah segar langsung dari petani</li>
+      </ul>
+      <div style="background:var(--cream);border-radius:12px;padding:24px;margin-top:32px;text-align:center"><p style="font-weight:700;margin-bottom:12px">Nikmati kuliner Batu Malang dalam paket wisata kami!</p><button class="btn-primary" onclick="showPage('outbound-wisata')"><i class="fas fa-utensils"></i> Lihat Paket Wisata</button></div>
+    </div>
+    <div class="blog-sidebar">
+      <div class="sidebar-widget"><h4>Artikel Terkait</h4><div class="sidebar-post" onclick="showBlogPost('blog-4')"><img src="https://images.unsplash.com/photo-1502444330042-d1a1ddf9bb5b?w=100&q=70" alt=""><div class="sidebar-post-text"><h5>10 Destinasi Terbaik Batu Malang</h5><span>28 Des 2024</span></div></div><div class="sidebar-post" onclick="showBlogPost('blog-2')"><img src="https://images.unsplash.com/photo-1487731272579-5db55bdb3baa?w=100&q=70" alt=""><div class="sidebar-post-text"><h5>Panduan Wisata ke Bromo</h5><span>10 Jan 2025</span></div></div></div>
+      <div class="sidebar-widget"><h4>Tag Artikel</h4><div class="tag-cloud"><span class="tag">Kuliner</span><span class="tag">Malang</span><span class="tag">Oleh-oleh</span><span class="tag">Wisata</span><span class="tag">Apel</span></div></div>
+      <div class="sidebar-widget" style="background:linear-gradient(135deg,#bf360c,#e64a19);color:#fff"><h4 style="color:#fff;border-color:rgba(255,255,255,0.3)">Paket All-Inclusive</h4><p style="font-size:13px;opacity:0.9;margin-bottom:16px">Paket wisata kami sudah termasuk kuliner lokal terbaik Batu Malang!</p><button class="btn-white" style="width:100%;justify-content:center" onclick="openWA()"><i class="fab fa-whatsapp"></i> Pesan Paket</button></div>
+    </div>
+  </div></div></div>
+  <footer><div class="container"><div class="footer-bottom" style="border:0;padding:24px 0;background:var(--green-dark)"><p style="color:rgba(255,255,255,0.5)">© 2025 Batu Adventure</p><button onclick="showPage('blog')" style="background:var(--orange);color:#fff;border:none;padding:8px 20px;border-radius:8px;font-weight:700;cursor:pointer">← Kembali ke Blog</button></div></div></footer>
+</div>
+
+<script>
+// Page Navigation
+function showPage(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const target = document.getElementById('page-' + page);
+  if (target) {
+    target.classList.add('active');
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+}
+
+function showBlogPost(postId) {
+  showPage(postId);
+}
+
+function navigateToContact() {
+  showPage('home');
+  setTimeout(() => {
+    const el = document.getElementById('kontak');
+    if (el) el.scrollIntoView({behavior: 'smooth'});
+  }, 100);
+}
+
+// Mobile Menu
+function toggleMobile() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+
+// Float Up Button
+window.addEventListener('scroll', () => {
+  const btn = document.getElementById('floatUp');
+  btn.classList.toggle('visible', window.scrollY > 300);
+});
+
+function scrollToTop() {
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+// Lightbox
+function openLightbox(src) {
+  document.getElementById('lightboxImg').src = src;
+  document.getElementById('lightbox').classList.add('open');
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+}
+
+// WhatsApp
+function openWA() {
+  window.open('https://wa.me/6281234567890?text=Halo,%20saya%20ingin%20bertanya%20tentang%20paket%20outbound%20Batu%20Malang', '_blank');
+}
+
+// Navbar scroll effect
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('navbar');
+  if (window.scrollY > 50) {
+    nav.style.background = 'rgba(10,61,31,0.99)';
+  } else {
+    nav.style.background = 'rgba(15,77,38,0.97)';
+  }
+});
+</script>
+</body>
+</html>
